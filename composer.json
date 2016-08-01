@@ -1,0 +1,36 @@
+{
+    "name": "cristianpontes/zoho-crm-client-php",
+    "type": "library",
+    "description": "Provides a clean readable PHP API to the Zoho Rest API",
+    "keywords": ["Zoho", "API Client", "CRM"],
+    "homepage": "https://cristianpontes.github.io/zoho-crm-client-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cristian Pontes",
+            "email": "hsilencee@gmail.com"
+        },
+        {
+            "name": "Christiaan Baartse",
+            "email": "anotherhero@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "kriswallsmith/buzz": "~0.10",
+        "psr/log": "~1.0.0"
+    },
+    "require-dev":{
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload": {
+        "psr-0": {"CristianPontes\\ZohoCRMClient": ""}
+    },
+    "target-dir": "CristianPontes/ZohoCRMClient",
+    "minimum-stability": "stable",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
