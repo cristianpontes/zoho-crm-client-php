@@ -10,21 +10,21 @@ use DateTime;
 class MutationResult
 {
     /** @var ZohoError */
-    private $error;
+    public $error;
     /** @var int */
-    private $index;
+    public $index;
     /** @var string */
-    private $code;
+    public $code;
     /** @var int */
-    private $id;
+    public $id;
     /** @var DateTime */
-    private $createdTime;
+    public $createdTime;
     /** @var DateTime */
-    private $modifiedTime;
+    public $modifiedTime;
     /** @var string */
-    private $createdBy;
+    public $createdBy;
     /** @var string */
-    private $modifiedBy;
+    public $modifiedBy;
 
     /**
      * @param int $index
@@ -74,6 +74,14 @@ class MutationResult
     public function isDuplicate()
     {
         return $this->code == '2002';
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDelete()
+    {
+        return $this->code == '5000';
     }
 
     /**

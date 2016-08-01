@@ -21,17 +21,6 @@ class UpdateRecords extends AbstractRequest
     }
 
     /**
-     * @param string $id
-     * @return GetRecordById
-     */
-    public function id($id)
-    {
-        $this->request->setParam('id', $id);
-
-        return $this;
-    }
-
-    /**
      * @param array $record Record as a simple associative array
      * @return UpdateRecords
      */
@@ -100,10 +89,6 @@ class UpdateRecords extends AbstractRequest
      */
     public function request()
     {
-        if (count($this->records) > 1) {
-            $this->request->setParam('id', null);
-        }
-
         return $this->request
             ->setParam('xmlData', $this->records)
             ->request();

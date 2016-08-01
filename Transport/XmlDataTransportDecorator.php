@@ -4,6 +4,7 @@ namespace CristianPontes\ZohoCRMClient\Transport;
 use CristianPontes\ZohoCRMClient\Exception;
 use CristianPontes\ZohoCRMClient\Response;
 use CristianPontes\ZohoCRMClient\ZohoError;
+
 use SimpleXMLElement;
 
 /**
@@ -109,6 +110,10 @@ class XmlDataTransportDecorator implements Transport
             return $this->parseResponseGetFields($xml);
         }
 
+        if ($this->method == 'deleteRecords') {
+            return $this->parseResponseDeleteRecords($xml);
+        }
+
         if (isset($xml->result->{$this->module})) {
             return $this->parseResponseGetRecords($xml);
         }
@@ -170,11 +175,17 @@ class XmlDataTransportDecorator implements Transport
                     (string) $field['isreadonly'] === 'true',
                     (int) $field['maxlength'],
                     $options,
-                    (string) $field['customfield'] === 'true'
+                    (string) $field['customfield'] === 'true',
+                    (string) isset($field['lm']) ? $field['lm'] : false
                 );
             }
         }
         return $records;
+    }
+
+    private function parseResponseDeleteRecords($xml)
+    {
+        return new Response\MutationResult(1, (string) $xml->result->code);
     }
 
     private function parseResponsePostRecordsMultiple($xml)

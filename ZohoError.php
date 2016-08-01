@@ -41,8 +41,8 @@ class ZohoError
         '4809' => 'Exceeded storage space limit',
     );
 
-    private $code;
-    private $description;
+    public $code;
+    public $description;
 
     public function __construct($code, $description)
     {

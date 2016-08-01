@@ -33,15 +33,6 @@ class UpdateRecordsTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testId()
-    {
-        $this->updateRecords->id('abc123');
-        $this->assertEquals(
-            'abc123',
-            $this->request->getParam('id')
-        );
-    }
-
     public function testAddRecord()
     {
         $this->updateRecords->addRecord(array('abc123'));

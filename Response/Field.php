@@ -3,16 +3,17 @@ namespace CristianPontes\ZohoCRMClient\Response;
 
 class Field
 {
-    private $section;
-    private $label;
-    private $type;
-    private $required;
-    private $readOnly;
-    private $maxLength;
-    private $options;
-    private $customField;
+    public $section;
+    public $label;
+    public $type;
+    public $required;
+    public $readOnly;
+    public $maxLength;
+    public $options;
+    public $customField;
+    public $lm;
 
-    public function __construct($section, $label, $type, $required, $readOnly, $maxLength, array $options, $customField)
+    public function __construct($section, $label, $type, $required, $readOnly, $maxLength, array $options, $customField, $lm)
     {
         $this->section = $section;
         $this->label = $label;
@@ -22,6 +23,7 @@ class Field
         $this->maxLength = $maxLength;
         $this->options = $options;
         $this->customField = $customField;
+        $this->lm = $lm;
     }
 
     /**
