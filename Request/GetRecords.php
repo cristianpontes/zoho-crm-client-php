@@ -14,7 +14,8 @@ class GetRecords extends AbstractRequest
     {
         $this->request
             ->setMethod('getRecords')
-            ->setParam('selectColumns', 'All');
+            ->setParam('selectColumns', 'All')
+            ->setParam('newFormat', '1');
     }
 
     /**
@@ -93,6 +94,17 @@ class GetRecords extends AbstractRequest
     public function since(\DateTime $timestamp)
     {
         $this->request->setParam('lastModifiedTime', $timestamp->format('Y-m-d H:i:s'));
+        return $this;
+    }
+
+    /**
+     * Include the empty fields in the response.
+     *
+     * @return GetRecords
+     */
+    public function withEmptyFields()
+    {
+        $this->request->setParam('newFormat', "2");
         return $this;
     }
 

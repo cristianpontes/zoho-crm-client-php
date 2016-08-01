@@ -22,7 +22,7 @@ class InsertRecordsTest extends \PHPUnit_Framework_TestCase
 
     public function testRecords()
     {
-        $record = array('First Name' => 'CristianPontes', 'Last Name' => 'Baartse');
+        $record = array('First Name' => 'Cristian', 'Last Name' => 'Pontes');
         $this->insertRecords->addRecord($record);
 
         $this->transport->response = true;

@@ -6,8 +6,8 @@ namespace CristianPontes\ZohoCRMClient\Response;
  */
 class Record
 {
-    private $index;
-    private $data;
+    public $index;
+    public $data;
 
     /**
      * @param array $data
@@ -43,5 +43,16 @@ class Record
     public function getData()
     {
         return $this->data;
+    }
+
+
+    /**
+     * Parse the record to JSON string
+     *
+     * @return string
+     */
+    public function toJSON()
+    {
+        return json_encode($this->data);
     }
 } 

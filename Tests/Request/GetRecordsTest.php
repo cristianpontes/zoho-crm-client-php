@@ -73,6 +73,15 @@ class GetRecordsTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    public function testWithEmptyFields()
+    {
+        $this->getRecords->withEmptyFields();
+        $this->assertEquals(
+            '2',
+            $this->request->getParam('newFormat')
+        );
+    }
+
     protected function setUp()
     {
         $this->request = new TransportRequest('SomeModuleName');
