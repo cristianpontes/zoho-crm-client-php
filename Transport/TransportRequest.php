@@ -1,5 +1,6 @@
 <?php
 namespace CristianPontes\ZohoCRMClient\Transport;
+use CristianPontes\ZohoCRMClient\Response\MutationResult;
 
 /**
  * Model representing the request to Zoho without the sugar
@@ -85,7 +86,7 @@ class TransportRequest
     }
 
     /**
-     * @return array
+     * @return array|MutationResult
      */
     public function request()
     {

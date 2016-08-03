@@ -85,6 +85,14 @@ class MutationResult
     }
 
     /**
+     * @return bool
+     */
+    public function isUploaded()
+    {
+        return $this->code === '4800';
+    }
+
+    /**
      * @param ZohoError $error
      * @return MutationResult
      */
@@ -129,7 +137,7 @@ class MutationResult
     }
 
     /**
-     * @param \DateTime $createdTime
+     * @param string $createdTime
      * @return MutationResult self
      */
     public function setCreatedTime($createdTime)
@@ -139,7 +147,7 @@ class MutationResult
     }
 
     /**
-     * @return \DateTime
+     * @return string
      */
     public function getCreatedTime()
     {
@@ -147,7 +155,7 @@ class MutationResult
     }
 
     /**
-     * @param \DateTime $modifiedTime
+     * @param string $modifiedTime
      * @return MutationResult self
      */
     public function setModifiedTime($modifiedTime)
@@ -157,7 +165,7 @@ class MutationResult
     }
 
     /**
-     * @return \DateTime
+     * @return string
      */
     public function getModifiedTime()
     {

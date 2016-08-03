@@ -114,6 +114,10 @@ class XmlDataTransportDecorator implements Transport
             return $this->parseResponseDeleteRecords($xml);
         }
 
+        if ($this->method == 'uploadFile') {
+            return $this->parseResponseUploadFile($xml);
+        }
+
         if (isset($xml->result->{$this->module})) {
             return $this->parseResponseGetRecords($xml);
         }
@@ -186,6 +190,19 @@ class XmlDataTransportDecorator implements Transport
     private function parseResponseDeleteRecords($xml)
     {
         return new Response\MutationResult(1, (string) $xml->result->code);
+    }
+
+    private function parseResponseUploadFile($xml)
+    {
+        $code = isset($xml->result->recorddetail) ? "4800" : "0";
+        $response = new Response\MutationResult(1, $code);
+        if($code === "4800")
+        {
+            $response->setId((string) $xml->result->recorddetail->FL[0]);
+            $response->setCreatedTime((string) $xml->result->recorddetail->FL[1]);
+            $response->setModifiedTime((string) $xml->result->recorddetail->FL[2]);
+        }
+        return $response;
     }
 
     private function parseResponsePostRecordsMultiple($xml)

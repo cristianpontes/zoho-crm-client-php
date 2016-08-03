@@ -43,23 +43,6 @@ class UpdateRecordsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(array('version' => 4, 'xmlData' =>  array(array('abc123'))), $this->transport->paramList);
     }
 
-    public function testNoIdIsSetForMultipleUpdate()
-    {
-        // Make sure an ID is set
-        $this->testId();
-
-        $this->updateRecords->addRecord(array('abc123'));
-        $this->updateRecords->addRecord(array('abc123456'));
-
-        $this->updateRecords->request();
-
-        // Test that the ID is removed
-        $this->assertNotEquals(
-            'abc123',
-            $this->request->getParam('id')
-        );
-    }
-
     public function testTriggerWorkflow()
     {
         $this->updateRecords->triggerWorkflow();

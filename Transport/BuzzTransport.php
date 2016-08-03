@@ -2,6 +2,7 @@
 namespace CristianPontes\ZohoCRMClient\Transport;
 
 use Buzz\Browser;
+use Buzz\Message\Form\FormUpload;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
@@ -45,9 +46,23 @@ class BuzzTransport implements Transport, LoggerAwareInterface
                 $requestBody
             ));
 
-        /** @var \Buzz\Message\Response $response */
-        $response = $this->browser->post($url, $headers, $requestBody);
+        // Checking for multipart request
+        $multipart = false;
+        foreach ($paramList as $param) {
+            if($param instanceof FormUpload){
+                $multipart = true;
+                break;
+            }
+        }
 
+        if($multipart){
+            /** @var \Buzz\Message\MessageInterface $response */
+            $response = $this->browser->submit($url, $paramList, 'POST', $headers);
+        }
+        else{
+            /** @var \Buzz\Message\Response $response */
+            $response = $this->browser->post($url, $headers, $requestBody);
+        }
 
         $responseContent = $response->getContent();
         if ($response->getStatusCode() !== 200) {

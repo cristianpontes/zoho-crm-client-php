@@ -54,6 +54,20 @@ class ZohoCRMClientTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('CristianPontes\ZohoCRMClient\Request\GetFields', $request);
     }
 
+    public function testDeleteRecords()
+    {
+        $request = $this->client->deleteRecords();
+
+        $this->assertInstanceOf('CristianPontes\ZohoCRMClient\Request\DeleteRecords', $request);
+    }
+
+    public function testUploadFile()
+    {
+        $request = $this->client->uploadFile();
+
+        $this->assertInstanceOf('CristianPontes\ZohoCRMClient\Request\UploadFile', $request);
+    }
+
     public function testRequest()
     {
         $request = $this->client->publicRequest();
