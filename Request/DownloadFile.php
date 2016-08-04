@@ -11,19 +11,19 @@ use CristianPontes\ZohoCRMClient\Response\MutationResult;
  * @see https://www.zoho.com/crm/help/api/deletefile.html
  */
 
-class DeleteFile extends AbstractRequest
+class DownloadFile extends AbstractRequest
 {
     protected function configureRequest()
     {
         $this->request
-            ->setMethod('deleteFile');
+            ->setMethod('downloadFile');
     }
 
     /**
-     * Set the file id to delete
+     * Set the file id to download
      *
      * @param $id
-     * @return DeleteFile
+     * @return DownloadFile
      */
     public function id($id){
         $this->request->setParam('id', $id);
@@ -31,7 +31,19 @@ class DeleteFile extends AbstractRequest
     }
 
     /**
-     * @return MutationResult
+     * This must be the full path of the file. i.e: /home/path/to/file.extension
+     * In this location the file will be saved
+     *
+     * @param $path
+     * @return DownloadFile
+     */
+    public function setFilePath($path){
+        $this->request->setParam('file_path', $path);
+        return $this;
+    }
+
+    /**
+     * @return bool
      */
     public function request()
     {

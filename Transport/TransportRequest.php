@@ -86,7 +86,7 @@ class TransportRequest
     }
 
     /**
-     * @return array|MutationResult
+     * @return array|MutationResult|bool
      */
     public function request()
     {

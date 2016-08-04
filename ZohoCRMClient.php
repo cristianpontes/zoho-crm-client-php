@@ -119,6 +119,14 @@ class ZohoCRMClient implements LoggerAwareInterface
     }
 
     /**
+     * @return Request\DownloadFile
+     */
+    public function downloadFile()
+    {
+        return new Request\DownloadFile($this->request());
+    }
+
+    /**
      * @return \CristianPontes\ZohoCRMClient\Transport\TransportRequest
      */
     protected function request()

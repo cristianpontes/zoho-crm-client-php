@@ -49,7 +49,7 @@ class UploadFile extends AbstractRequest
     /**
      * Pass the file input stream to a record
      *
-     * @param $path | this must be the full path of the file
+     * @param $path - this must be the full path of the file. i.e: /home/path/to/file.extension
      * @return UploadFile
      */
     public function uploadFromPath($path)

@@ -18,6 +18,9 @@ class XmlDataTransportDecorator implements Transport
     private $module;
     /** @var string */
     private $method;
+    /** @var string */
+    private $call_params;
+
 
     /**
      * @param Transport $transport to be decorated with XML support
@@ -37,6 +40,7 @@ class XmlDataTransportDecorator implements Transport
     {
         $this->module = $module;
         $this->method = $method;
+        $this->call_params = $paramList;
 
         if (array_key_exists('xmlData', $paramList)) {
             $paramList['xmlData'] = $this->encodeRecords($paramList['xmlData']);
@@ -88,6 +92,11 @@ class XmlDataTransportDecorator implements Transport
      */
     private function parse($content)
     {
+
+        if ($this->method == 'downloadFile') {
+            return $this->parseResponseDownloadFile($content);
+        }
+
         $xml = new SimpleXMLElement($content);
         if (isset($xml->error)) {
             throw new Exception\ZohoErrorException(
@@ -213,6 +222,21 @@ class XmlDataTransportDecorator implements Transport
     {
         return new Response\MutationResult(1, (string) $xml->success->code);
     }
+
+    public function parseResponseDownloadFile($file_content)
+    {
+        if(!isset($this->call_params['file_path'])) {
+            throw new Exception\Exception('Missed file path, set it');
+        }
+
+        $fp = fopen($this->call_params['file_path'], 'w');
+        $success = fwrite($fp, $file_content);
+        fclose($fp);
+
+        return $success ? true : false;
+    }
+
+
 
     private function parseResponsePostRecordsMultiple($xml)
     {
