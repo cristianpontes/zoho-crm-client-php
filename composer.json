@@ -2,7 +2,7 @@
     "name": "cristianpontes/zoho-crm-client-php",
     "type": "library",
     "description": "Provides a clean readable PHP API to the Zoho Rest API",
-    "keywords": ["Zoho", "API Client", "CRM"],
+    "keywords": ["zoho", "api", "crm", "client", "rest", "sdk"],
     "homepage": "https://cristianpontes.github.io/zoho-crm-client-php",
     "license": "MIT",
     "authors": [
