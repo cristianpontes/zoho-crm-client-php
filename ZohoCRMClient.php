@@ -134,6 +134,15 @@ class ZohoCRMClient implements LoggerAwareInterface
         return new Request\SearchRecords($this->request());
     }
 
+
+    /**
+     * @return Request\GetRelatedRecords
+     */
+    public function getRelatedRecords()
+    {
+        return new Request\GetRelatedRecords($this->request());
+    }
+
     /**
      * @return \CristianPontes\ZohoCRMClient\Transport\TransportRequest
      */
