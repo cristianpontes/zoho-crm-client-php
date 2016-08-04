@@ -118,6 +118,10 @@ class XmlDataTransportDecorator implements Transport
             return $this->parseResponseUploadFile($xml);
         }
 
+        if ($this->method == 'deleteFile') {
+            return $this->parseResponseDeleteFile($xml);
+        }
+
         if (isset($xml->result->{$this->module})) {
             return $this->parseResponseGetRecords($xml);
         }
@@ -203,6 +207,11 @@ class XmlDataTransportDecorator implements Transport
             $response->setModifiedTime((string) $xml->result->recorddetail->FL[2]);
         }
         return $response;
+    }
+
+    public function parseResponseDeleteFile($xml)
+    {
+        return new Response\MutationResult(1, (string) $xml->success->code);
     }
 
     private function parseResponsePostRecordsMultiple($xml)

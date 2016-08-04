@@ -79,9 +79,9 @@ class MutationResult
     /**
      * @return bool
      */
-    public function isDelete()
+    public function isDeleted()
     {
-        return $this->code == '5000';
+        return $this->code == '5000' || $this->code == "4800";
     }
 
     /**

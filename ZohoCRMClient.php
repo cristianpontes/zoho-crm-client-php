@@ -111,6 +111,14 @@ class ZohoCRMClient implements LoggerAwareInterface
     }
 
     /**
+     * @return Request\DeleteFile
+     */
+    public function deleteFile()
+    {
+        return new Request\DeleteFile($this->request());
+    }
+
+    /**
      * @return \CristianPontes\ZohoCRMClient\Transport\TransportRequest
      */
     protected function request()

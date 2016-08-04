@@ -9,7 +9,7 @@ use CristianPontes\ZohoCRMClient\Response\MutationResult;
  *
  * You can use the deleteRecords method to delete an specific record using the ID
  *
- * @see https://www.zoho.com/crm/help/api/deleterecords.html
+ * @see https://www.zoho.com/crm/help/api/uploadfile.html
  */
 
 class UploadFile extends AbstractRequest

@@ -6,7 +6,7 @@ use CristianPontes\ZohoCRMClient\Response\MutationResult;
 /**
  * InsertRecords API Call
  *
- * @see https://www.zoho.com/crm/help/api/insertrecords.html
+ * @see https://www.zoho.com/crm/help/api/updaterecords.html
  */
 class UpdateRecords extends AbstractRequest
 {

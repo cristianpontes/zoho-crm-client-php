@@ -8,22 +8,22 @@ use CristianPontes\ZohoCRMClient\Response\MutationResult;
  *
  * You can use the deleteRecords method to delete an specific record using the ID
  *
- * @see https://www.zoho.com/crm/help/api/deleterecords.html
+ * @see https://www.zoho.com/crm/help/api/deletefile.html
  */
 
-class DeleteRecords extends AbstractRequest
+class DeleteFile extends AbstractRequest
 {
     protected function configureRequest()
     {
         $this->request
-            ->setMethod('deleteRecords');
+            ->setMethod('deleteFile');
     }
 
     /**
      * Set the record Id to delete
      *
      * @param $id
-     * @return DeleteRecords
+     * @return DeleteFile
      */
     public function id($id){
         $this->request->setParam('id', $id);
