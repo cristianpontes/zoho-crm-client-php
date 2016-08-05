@@ -3,9 +3,9 @@ namespace CristianPontes\ZohoCRMClient\Request;
 use CristianPontes\ZohoCRMClient\Response\Record;
 
 /**
- * GetRecords API Call
+ * GetRelatedRecords API Call
  *
- * You can use the getRecords method to fetch all users data specified in the API request.
+ * You can use the getRelatedRecords method to fetch related records
  *
  * @see https://www.zoho.com/crm/help/api/getrelatedrecords.html
  */

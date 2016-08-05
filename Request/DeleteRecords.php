@@ -6,7 +6,7 @@ use CristianPontes\ZohoCRMClient\Response\MutationResult;
 /**
  * DeleteRecords API Call
  *
- * You can use the deleteRecords method to delete an specific record using the ID
+ * You can use this method to delete the selected record (you must specify unique ID of the record) and move to the recycle bin
  *
  * @see https://www.zoho.com/crm/help/api/deleterecords.html
  */

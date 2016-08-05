@@ -3,9 +3,9 @@ namespace CristianPontes\ZohoCRMClient\Request;
 use CristianPontes\ZohoCRMClient\Response\Record;
 
 /**
- * GetRecords API Call
+ * SearchRecords API Call
  *
- * You can use the getRecords method to fetch all users data specified in the API request.
+ * You can use the searchRecords method to get the list of records that meet your search criteria
  *
  * @see https://www.zoho.com/crm/help/api/searchrecords.html
  */

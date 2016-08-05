@@ -4,7 +4,7 @@ namespace CristianPontes\ZohoCRMClient\Request;
 /**
  * GetRecordById API Call
  *
- * You can use this method to retrieve individual records by record ID.
+ * You can use this method to retrieve individual records by record ID
  *
  * @see https://www.zoho.com/crm/help/api/getrecordbyid.html
  */

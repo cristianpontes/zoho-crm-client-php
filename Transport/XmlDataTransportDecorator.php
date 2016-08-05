@@ -131,6 +131,10 @@ class XmlDataTransportDecorator implements Transport
             return $this->parseResponseDeleteFile($xml);
         }
 
+        if ($this->method == 'getDeletedRecordIds') {
+            return $this->parseResponseGetDeletedRecordIds($xml);
+        }
+
         if (isset($xml->result->{$this->module})) {
             return $this->parseResponseGetRecords($xml);
         }
@@ -218,12 +222,12 @@ class XmlDataTransportDecorator implements Transport
         return $response;
     }
 
-    public function parseResponseDeleteFile($xml)
+    private function parseResponseDeleteFile($xml)
     {
         return new Response\MutationResult(1, (string) $xml->success->code);
     }
 
-    public function parseResponseDownloadFile($file_content)
+    private function parseResponseDownloadFile($file_content)
     {
         if(!isset($this->call_params['file_path'])) {
             throw new Exception\Exception('Missed file path, set it');
@@ -236,7 +240,11 @@ class XmlDataTransportDecorator implements Transport
         return $success ? true : false;
     }
 
-
+    private function parseResponseGetDeletedRecordIds($xml)
+    {
+        $ids = explode(',', (string) $xml->result->DeletedIDs);
+        return new Response\Record($ids, 1);
+    }
 
     private function parseResponsePostRecordsMultiple($xml)
     {

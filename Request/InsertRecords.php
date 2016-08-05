@@ -6,6 +6,8 @@ use CristianPontes\ZohoCRMClient\Response\MutationResult;
 /**
  * InsertRecords API Call
  *
+ * You can use the insertRecords method to insert records into the required Zoho CRM module
+ *
  * @see https://www.zoho.com/crm/help/api/insertrecords.html
  */
 class InsertRecords extends AbstractRequest

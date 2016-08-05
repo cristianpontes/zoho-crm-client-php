@@ -4,11 +4,11 @@ namespace CristianPontes\ZohoCRMClient\Request;
 use CristianPontes\ZohoCRMClient\Response\MutationResult;
 
 /**
- * DeleteRecords API Call
+ * DownloadFile API Call
  *
- * You can use the deleteRecords method to delete an specific record using the ID
+ * You can use this method to download files from CRM to your system.
  *
- * @see https://www.zoho.com/crm/help/api/deletefile.html
+ * @see https://www.zoho.com/crm/help/api/downloadfile.html
  */
 
 class DownloadFile extends AbstractRequest

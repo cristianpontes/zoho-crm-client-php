@@ -4,7 +4,9 @@ namespace CristianPontes\ZohoCRMClient\Request;
 use CristianPontes\ZohoCRMClient\Response\MutationResult;
 
 /**
- * InsertRecords API Call
+ * UpdateRecords API Call
+ *
+ * You can use the updateRecords method to update or modify the records in Zoho CRM
  *
  * @see https://www.zoho.com/crm/help/api/updaterecords.html
  */

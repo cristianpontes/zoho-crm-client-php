@@ -5,9 +5,9 @@ use Buzz\Message\Form\FormUpload;
 use CristianPontes\ZohoCRMClient\Response\MutationResult;
 
 /**
- * DeleteRecords API Call
+ * UploadFile API Call
  *
- * You can use the deleteRecords method to delete an specific record using the ID
+ * You can use this method to attach files to records
  *
  * @see https://www.zoho.com/crm/help/api/uploadfile.html
  */

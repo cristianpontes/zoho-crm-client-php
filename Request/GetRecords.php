@@ -4,7 +4,7 @@ namespace CristianPontes\ZohoCRMClient\Request;
 /**
  * GetRecords API Call
  *
- * You can use the getRecords method to fetch all users data specified in the API request.
+ * You can use the getRecords method to fetch all users data specified in the API request
  *
  * @see https://www.zoho.com/crm/help/api/getrecords.html
  */

@@ -4,9 +4,9 @@ namespace CristianPontes\ZohoCRMClient\Request;
 use CristianPontes\ZohoCRMClient\Response\MutationResult;
 
 /**
- * DeleteRecords API Call
+ * DeleteFile API Call
  *
- * You can use the deleteRecords method to delete an specific record using the ID
+ * You can use this method to delete files attached to records
  *
  * @see https://www.zoho.com/crm/help/api/deletefile.html
  */
