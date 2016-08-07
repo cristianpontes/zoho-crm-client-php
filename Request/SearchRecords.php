@@ -109,10 +109,12 @@ class SearchRecords extends AbstractRequest
     {
         $wheres = '';
         $orWheres = '';
-        foreach ($this->wheres as $key => $value)
-        {
-            $wheres .= '('.$key.':'.$value.')';
-            if(!empty(next($this->wheres))){
+
+        $wheres_keys = array_keys($this->wheres);
+        for ($i = 0; $i < count($wheres_keys); $i++) {
+            $current = $wheres_keys[$i];
+            $wheres .= '('.$current.':'.$this->wheres[$current].')';
+            if(isset($wheres_keys[$i+1])){
                 $wheres .= 'AND';
             }
         }
