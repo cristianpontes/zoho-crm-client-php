@@ -45,6 +45,15 @@ class GetRecordByIdTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    public function testWithEmptyFields()
+    {
+        $this->getRecordById->withEmptyFields();
+        $this->assertEquals(
+            '2',
+            $this->request->getParam('newFormat')
+        );
+    }
+
     protected function setUp()
     {
         $this->request = new TransportRequest('MyOwnModuleName');

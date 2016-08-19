@@ -46,4 +46,15 @@ class GetRecordById  extends AbstractRequest
 
         return $this;
     }
+
+    /**
+     * Include the empty fields in the response.
+     *
+     * @return GetRecordById
+     */
+    public function withEmptyFields()
+    {
+        $this->request->setParam('newFormat', "2");
+        return $this;
+    }
 }
