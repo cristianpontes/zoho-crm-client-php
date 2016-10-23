@@ -11,6 +11,16 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/prism.css">
     <script type="text/javascript" src="js/prism.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-70412018-8', 'auto');
+      ga('send', 'pageview');
+
+    </script>
   </head>
   <body>
 
@@ -217,9 +227,71 @@
           ...
       }
       </code></pre>
-      <br><br>
 
+      <p>In some cases you will need to use more complex data in your records, I.E: In the SalesOrders module, if you want to add some products to your record, pass the 'Product Details' array will be necessary</p>
+      <p>Reference: <a href="https://www.zoho.com/crm/help/api/insertrecords.html#SalesOrders" target="_blank">InsertRecords#SalesOrders</a></p>
+      <p>Here is an XML example record, let's do the same, but with the ZohoCRMClient:</p>
 
+      <pre><code class="language-xml">
+        &#60;SalesOrders&#62;
+          &#60;row no="1"&#62;
+            &#60;FL val="Subject"&#62;Subject Test&#60;/FL&#62;
+            &#60;FL val="Sub Total"&#62;20.0&#60;/FL&#62;
+            &#60;FL val="Grand Total"&#62;20.0&#60;/FL&#62;
+            &#60;FL val="Product Details"&#62;
+              &#60;product no="1"&#62;
+                &#60;FL val="Product Id"&#62;2000000017001&#60;/FL&#62;
+                &#60;FL val="Unit Price"&#62;10.0&#60;/FL&#62;
+                &#60;FL val="Quantity"&#62;1.0&#60;/FL&#62;
+                &#60;FL val="Total"&#62;10.0&#60;/FL&#62;
+              &#60;/product>
+              &#60;product no="2">
+                &#60;FL val="Product Id"&#62;2000000017002&#60;/FL&#62;
+                &#60;FL val="Unit Price"&#62;10.0&#60;/FL&#62;
+                &#60;FL val="Quantity"&#62;1.0&#60;/FL&#62;
+                &#60;FL val="Total"&#62;10.0&#60;/FL&#62;
+              &#60;/product&#62;
+            &#60;/FL&#62;
+          &#60;/row&#62;
+        &#60;/SalesOrders&#62;
+      </code></pre>
+      <p>The code would be:</p>
+      <pre><code class="language-php">
+      use CristianPontes\ZohoCRMClient\ZohoCRMClient;
+
+      $client = new ZohoCRMClient('SalesOrders', 'YourAuthToken');
+
+      $records = $client->insertRecords()
+        ->addRecord([
+            'Subject' => 'Subject Test',
+            'Sub Total' => '20.0',
+            'Grand Total' => '20.0',
+            'Product Details' => [
+                [
+                    '@type' => 'product',
+                    'Product Id' => 2000000017001,
+                    'Unit Price' => '10.0',
+                    'Quantity' => '1.0',
+                    'Total' => '10.0',
+                ],
+                [
+                    '@type' => 'product',
+                    'Product Id' => 2000000017002,
+                    'Unit Price' => '10.0',
+                    'Quantity' => '1.0',
+                    'Total' => '10.0',
+                ]
+            ]
+        ])->request();
+
+      foreach ($records as $record) {
+          var_dump($record->isInserted());
+          ...
+          ...
+      }
+      </code></pre>
+      <p>Notice the <b>"@type"</b> flag that I use in each product, that is simple way to declare what should be the parent XML tag for that array, in order to avoid unnecessary array indexing... </p>
+      <br>
 
       <h3 id="updateRecords"><b>updateRecords</b></h3>
       <p>UpdateRecords API Call</p>
