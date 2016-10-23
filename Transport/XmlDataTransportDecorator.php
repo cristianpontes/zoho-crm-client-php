@@ -64,21 +64,56 @@ class XmlDataTransportDecorator implements Transport
             $row = $root->addChild('row');
             $row->addAttribute('no', $no + 1);
 
-            foreach ($record as $key => $value) {
-                if ($value instanceof \DateTime) {
+            foreach ($record as $key => $value)
+            {
+                if ($value instanceof \DateTime)
+                {
                     if ($value->format('His') === '000000') {
                         $value = $value->format('m/d/Y');
                     } else {
                         $value = $value->format('Y-m-d H:i:s');
                     }
                 }
+
                 $keyValue = $row->addChild('FL');
-                $keyValue[0] = $value;
                 $keyValue->addAttribute('val', $key);
+
+                if(is_array($value)) {
+                   $this->parseNestedValues($value, $keyValue);
+                }
+                else {
+                    $keyValue[0] = $value;
+                }
             }
         }
 
         return $root->asXML();
+    }
+
+    /**
+     * @param $array
+     * @param $xml
+     */
+    private function parseNestedValues($array, &$xml)
+    {
+        foreach($array as $key => $value)
+        {
+            if(is_array($value))
+            {
+                $type = isset($value['@type']) ? $value['@type'] : "null";
+                unset($value['@type']);
+
+                $subNode = $xml->addChild("$type");
+                $subNode->addAttribute('no', $key + 1);
+                $this->parseNestedValues($value, $subNode);
+            }
+            else
+            {
+                $keyValue = $xml->addChild('FL');
+                $keyValue[0] = $value;
+                $keyValue->addAttribute('val', $key);
+            }
+        }
     }
 
     /**
@@ -146,6 +181,10 @@ class XmlDataTransportDecorator implements Transport
         throw new Exception\UnexpectedValueException('Xml doesn\'t contain expected fields');
     }
 
+    /**
+     * @param SimpleXMLElement $xml
+     * @return array
+     */
     private function parseResponseGetRecords(SimpleXMLElement $xml)
     {
         $records = array();
@@ -156,6 +195,10 @@ class XmlDataTransportDecorator implements Transport
         return $records;
     }
 
+    /**
+     * @param SimpleXMLElement $row
+     * @return Response\Record
+     */
     private function rowToRecord(SimpleXMLElement $row)
     {
         $data = array();
@@ -175,6 +218,10 @@ class XmlDataTransportDecorator implements Transport
         return new Response\Record($data, (int) $row['no']);
     }
 
+    /**
+     * @param $xml
+     * @return array
+     */
     private function parseResponseGetFields($xml)
     {
         $records = array();
@@ -204,11 +251,19 @@ class XmlDataTransportDecorator implements Transport
         return $records;
     }
 
+    /**
+     * @param $xml
+     * @return Response\MutationResult
+     */
     private function parseResponseDeleteRecords($xml)
     {
         return new Response\MutationResult(1, (string) $xml->result->code);
     }
 
+    /**
+     * @param $xml
+     * @return Response\MutationResult
+     */
     private function parseResponseUploadFile($xml)
     {
         $code = isset($xml->result->recorddetail) ? "4800" : "0";
@@ -222,11 +277,20 @@ class XmlDataTransportDecorator implements Transport
         return $response;
     }
 
+    /**
+     * @param $xml
+     * @return Response\MutationResult
+     */
     private function parseResponseDeleteFile($xml)
     {
         return new Response\MutationResult(1, (string) $xml->success->code);
     }
 
+    /**
+     * @param $file_content
+     * @return bool
+     * @throws Exception\Exception
+     */
     private function parseResponseDownloadFile($file_content)
     {
         if(!isset($this->call_params['file_path'])) {
@@ -240,12 +304,20 @@ class XmlDataTransportDecorator implements Transport
         return $success ? true : false;
     }
 
+    /**
+     * @param $xml
+     * @return Response\Record
+     */
     private function parseResponseGetDeletedRecordIds($xml)
     {
         $ids = explode(',', (string) $xml->result->DeletedIDs);
         return new Response\Record($ids, 1);
     }
 
+    /**
+     * @param $xml
+     * @return array
+     */
     private function parseResponsePostRecordsMultiple($xml)
     {
         $records = array();

@@ -20,7 +20,7 @@ class BuzzTransportTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnValue(200));
 
         $expectedResponse = file_get_contents(
-            __DIR__ . '/getRecordsResponse.xml'
+            __DIR__ . '/../XML/getRecordsResponse.xml'
         );
         $response->expects($this->any())
             ->method('getContent')

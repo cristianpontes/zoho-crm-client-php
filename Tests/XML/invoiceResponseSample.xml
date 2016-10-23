@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<response uri="/crm/private/xml/Leads/getRecords">
+    <result>
+        <Invoices>
+            <row no="1">
+                <FL val="INVOICEID">1870824000000114001</FL>
+            </row>
+        </Invoices>
+    </result>
+</response>

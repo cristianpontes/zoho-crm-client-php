@@ -31,7 +31,7 @@ class UploadFileTest extends \PHPUnit_Framework_TestCase
 
     public function uploadFromPath()
     {
-        $this->uploadFile->uploadFromPath(realpath('../getRecordsResponse.xml'));
+        $this->uploadFile->uploadFromPath(realpath(__DIR__ . '/../XML/getRecordsResponse.xml'));
         $this->assertTrue($this->request->getParam('content') instanceof FormUpload);
     }
 

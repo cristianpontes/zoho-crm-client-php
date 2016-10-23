@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<Invoices><row no="1"><FL val="Subject">Test Subject</FL><FL val="CONTACTID">423412341234</FL><FL val="Product Details"><product no="1"><FL val="Product Id">314534523452345</FL><FL val="Unit Price">4800</FL><FL val="Quantity">1.0</FL><FL val="Total">4800</FL></product><product no="2"><FL val="Product Id">314534523452348</FL><FL val="Unit Price">4800</FL><FL val="Quantity">1.0</FL><FL val="Total">4800</FL></product></FL></row></Invoices>

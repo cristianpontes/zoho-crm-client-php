@@ -23,7 +23,7 @@ class XmlDataTransportDecoratorTest extends \PHPUnit_Framework_TestCase
             array('First Name' => 'Stefan'),
         );
 
-        $this->mockTransport->response = file_get_contents(__DIR__ . '/getRecordsResponse.xml');
+        $this->mockTransport->response = file_get_contents(__DIR__ . '/../XML/getRecordsResponse.xml');
 
         $records = $this->transport->call(
             'Leads',
