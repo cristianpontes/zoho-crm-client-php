@@ -100,7 +100,7 @@ class SearchRecords extends AbstractRequest
      */
     public function orWhere($field, $value)
     {
-        $this->orWheres[$field] = $value;
+        $this->orWheres[] = array($field => $value);
         $this->parseQueries();
         return $this;
     }
@@ -118,9 +118,10 @@ class SearchRecords extends AbstractRequest
                 $wheres .= 'AND';
             }
         }
-        foreach ($this->orWheres as $key => $value)
-        {
-            $orWheres .= 'OR('.$key.':'.$value.')';
+        foreach ($this->orWheres as $item) {
+            foreach ($item as $key => $value) {
+                $orWheres .= 'OR('.$key.':'.$value.')';
+            }
         }
         $query = '(('.$wheres.')'.$orWheres.')';
         $this->request->setParam('criteria', $query);

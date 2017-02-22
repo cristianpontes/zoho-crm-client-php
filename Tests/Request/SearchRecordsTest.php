@@ -61,9 +61,10 @@ class SearchRecordsTest extends \PHPUnit_Framework_TestCase
         $this->searchRecords
             ->where('SomeField1', 'SomeValue1')
             ->where('SomeField2', 'SomeValue2')
-            ->orWhere('SomeField3', 'SomeValue3');
+            ->orWhere('SomeField3', 'SomeValue3')
+            ->orWhere('SomeField3', 'SomeValue4');
         $this->assertEquals(
-            '(((SomeField1:SomeValue1)AND(SomeField2:SomeValue2))OR(SomeField3:SomeValue3))',
+            '(((SomeField1:SomeValue1)AND(SomeField2:SomeValue2))OR(SomeField3:SomeValue3)OR(SomeField3:SomeValue4))',
             $this->request->getParam('criteria')
         );
     }
