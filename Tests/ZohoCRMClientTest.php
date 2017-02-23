@@ -2,12 +2,13 @@
 namespace CristianPontes\ZohoCRMClient\Tests;
 
 use CristianPontes\ZohoCRMClient\Request\GetRecords;
-use CristianPontes\ZohoCRMClient\Transport\MockTransport;
+use CristianPontes\ZohoCRMClient\Transport\MockLoggerAwareTransport;
 use CristianPontes\ZohoCRMClient\ZohoCRMClient;
+use Psr\Log\AbstractLogger;
 
 class ZohoCRMClientTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var MockTransport */
+    /** @var MockLoggerAwareTransport */
     private $transport;
 
     /** @var mockZohoCRMClient */
@@ -75,10 +76,36 @@ class ZohoCRMClientTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('CristianPontes\ZohoCRMClient\Transport\TransportRequest', $request);
     }
 
+    public function testSetLogger()
+    {
+        $logger = new SingleMessageLogger();
+        $this->client->setLogger($logger);
+
+        $this->client->getRecords()->request();
+
+        $logs = $logger->getLogs();
+        $this->assertEquals('Leads/getRecords', $logs);
+    }
+
     protected function setUp()
     {
-        $this->transport = new MockTransport();
+        $this->transport = new MockLoggerAwareTransport();
         $this->client = new mockZohoCRMClient('Leads', $this->transport);
+    }
+}
+
+class SingleMessageLogger extends AbstractLogger {
+
+    private $message = '';
+
+    public function log($level, $message, array $context = array())
+    {
+        $this->message = $message;
+    }
+
+    public function getLogs()
+    {
+        return $this->message;
     }
 }
 
