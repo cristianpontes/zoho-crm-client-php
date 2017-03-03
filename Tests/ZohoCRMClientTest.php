@@ -4,7 +4,7 @@ namespace CristianPontes\ZohoCRMClient\Tests;
 use CristianPontes\ZohoCRMClient\Request\GetRecords;
 use CristianPontes\ZohoCRMClient\Transport\MockLoggerAwareTransport;
 use CristianPontes\ZohoCRMClient\ZohoCRMClient;
-use Psr\Log\AbstractLogger;
+use CristianPontes\ZohoCRMClient\Tests\SingleMessageLogger;
 
 class ZohoCRMClientTest extends \PHPUnit_Framework_TestCase
 {
@@ -91,21 +91,6 @@ class ZohoCRMClientTest extends \PHPUnit_Framework_TestCase
     {
         $this->transport = new MockLoggerAwareTransport();
         $this->client = new mockZohoCRMClient('Leads', $this->transport);
-    }
-}
-
-class SingleMessageLogger extends AbstractLogger {
-
-    private $message = '';
-
-    public function log($level, $message, array $context = array())
-    {
-        $this->message = $message;
-    }
-
-    public function getLogs()
-    {
-        return $this->message;
     }
 }
 
