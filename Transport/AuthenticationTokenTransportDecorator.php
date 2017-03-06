@@ -4,15 +4,14 @@ namespace CristianPontes\ZohoCRMClient\Transport;
 /**
  * Transport Decorator that transparently adds the authtoken param and scope param
  */
-class AuthenticationTokenTransportDecorator implements Transport
+class AuthenticationTokenTransportDecorator extends AbstractTransportDecorator
 {
     private $authToken;
-    private $transport;
 
     function __construct($authToken, Transport $transport)
     {
         $this->authToken = $authToken;
-        $this->transport = $transport;
+        parent::__construct($transport);
     }
 
     public function call($module, $method, array $paramList)

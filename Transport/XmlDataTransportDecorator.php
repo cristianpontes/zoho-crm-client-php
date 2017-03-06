@@ -10,10 +10,8 @@ use SimpleXMLElement;
 /**
  * XmlDataTransportDecorator handles the XML communication with Zoho
  */
-class XmlDataTransportDecorator implements Transport
+class XmlDataTransportDecorator extends AbstractTransportDecorator
 {
-    /** @var Transport */
-    private $transport;
     /** @var string */
     private $module;
     /** @var string */
@@ -27,7 +25,7 @@ class XmlDataTransportDecorator implements Transport
      */
     public function __construct(Transport $transport)
     {
-        $this->transport = $transport;
+        parent::__construct($transport);
     }
 
     /**
