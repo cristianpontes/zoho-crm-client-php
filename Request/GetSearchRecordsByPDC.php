@@ -15,7 +15,7 @@ class GetSearchRecordsByPDC extends AbstractRequest
     protected function configureRequest()
     {
         $this->request
-            ->setMethod('getRelatedRecords')
+            ->setMethod('getSearchRecordsByPDC')
             ->setParam('newFormat', '1')
             ->setParam('selectColumns', 'All');
     }

@@ -59,6 +59,7 @@ echo "</pre>";
 + getRelatedRecords
 + getRecordById
 + searchRecords
++ getSearchRecordsByPDC
 + uploadFile
 + downloadFile
 + deleteFile
