@@ -138,6 +138,14 @@ class ZohoCRMClient implements LoggerAwareInterface
     }
 
     /**
+     * @return Request\GetSearchRecordsByPDC
+     */
+    public function getSearchRecordsByPDC()
+    {
+        return new Request\GetSearchRecordsByPDC($this->request());
+    }
+
+    /**
      * @return Request\GetRelatedRecords
      */
     public function getRelatedRecords()

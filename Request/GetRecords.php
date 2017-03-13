@@ -22,7 +22,7 @@ class GetRecords extends AbstractRequest
      * Column names to select i.e, ['Last Name', 'Website', 'Email']
      * When not set defaults to all columns
      *
-     * @param array $columns
+     * @param array|string $columns
      * @return GetRecords
      */
     public function selectColumns($columns)
