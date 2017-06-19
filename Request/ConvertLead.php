@@ -14,15 +14,22 @@ use CristianPontes\ZohoCRMClient\Response\MutationResult;
  */
 class ConvertLead extends AbstractRequest
 {
-    const OPTION_FIELDS = array(
-        'createPotential',
-        'assignTo',
-        'notifyLeadOwner',
-        'notifyNewEntityOwner',
-    );
-
     /** @var array */
     private $record = array();
+
+    /**
+     * Returns option field names
+     * @return array
+     */
+    static public function getOptionFields()
+    {
+        return array(
+            'createPotential',
+            'assignTo',
+            'notifyLeadOwner',
+            'notifyNewEntityOwner',
+        );
+    }
 
     protected function configureRequest()
     {

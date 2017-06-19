@@ -64,7 +64,7 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
         $root = new SimpleXMLElement('<Potentials></Potentials>');
 
         // row 1 (options)
-        foreach (ConvertLead::OPTION_FIELDS as $optionName) {
+        foreach (ConvertLead::getOptionFields() as $optionName) {
             if (isset($paramList[$optionName])) {
                 $options[$optionName] = $paramList[$optionName];
             }
