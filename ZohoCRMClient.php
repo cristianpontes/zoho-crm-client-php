@@ -15,7 +15,7 @@ class ZohoCRMClient implements LoggerAwareInterface
     /** @var string */
     private $module;
     /** @var Transport\Transport */
-    private $transport;
+    protected $transport;
     /** @var LoggerInterface */
     private $logger;
 
