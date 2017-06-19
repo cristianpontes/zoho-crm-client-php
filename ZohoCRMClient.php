@@ -15,7 +15,7 @@ class ZohoCRMClient implements LoggerAwareInterface
     /** @var string */
     private $module;
     /** @var Transport\Transport */
-    private $transport;
+    protected $transport;
     /** @var LoggerInterface */
     private $logger;
 
@@ -87,6 +87,14 @@ class ZohoCRMClient implements LoggerAwareInterface
     public function updateRecords()
     {
         return new Request\UpdateRecords($this->request());
+    }
+
+    /**
+     * @return Request\ConvertLead
+     */
+    public function convertLead()
+    {
+        return new Request\ConvertLead($this->request());
     }
 
     /**
