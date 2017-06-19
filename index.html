@@ -52,6 +52,7 @@
         <li><a href="#downloadFile">downloadFile</a></li>
         <li><a href="#deleteFile">deleteFile</a></li>
         <li><a href="#getFields">getFields</a></li>
+        <li><a href="#convertLead">convertLead</a></li>
       </ul>
       <br>
 
@@ -838,6 +839,102 @@
             [lm] =>
         )
         ... continues ...
+      </code></pre>
+      <br><br>
+
+      <h3 id="convertLead"><b>convertLead</b></h3>
+      <p>ConvertLead API Call</p>
+      <p>You can use this method to convert Lead to potential, account and contact. You can also associate the existing contact or account to the converting Lead using this method.</p>
+      <p>Check: <a href="https://www.zoho.com/crm/help/api/convertlead.html" target="_blank">https://www.zoho.com/crm/help/api/convertlead.html</a></p>
+
+      <p><b>Available functions in the method:</b></p>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Params</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>setLeadId</td>
+          <td>$leadId - string</td>
+          <td>Specify unique Lead ID to convert.</td>
+        </tr>
+        <tr>
+          <td>setCreatePotential</td>
+          <td>$createPotential - bool</td>
+          <td>Set it true if Potential should be created.</td>
+        </tr>
+        <tr>
+          <td>setAssignTo</td>
+          <td>$assignTo - string</td>
+          <td>Specify a user the converted Lead should be assign to. It could be SMOWNERID value or user email.</td>
+        </tr>
+        <tr>
+          <td>setNotifyLeadOwner</td>
+          <td>$notifyLeadOwner - bool</td>
+          <td>Specify if a Lead owner should be notified.</td>
+        </tr>
+        <tr>
+          <td>setNotifyNewEntityOwner</td>
+          <td>$notifyNewEntityOwner - bool</td>
+          <td>Specify if a new entity owner should be notified.</td>
+        </tr>
+        <tr>
+          <td>addRecord</td>
+          <td>$record - array</td>
+          <td>Specify values for potential. It is mandatory ONLY if setCreatePotential(true) is set.</td>
+        </tr>
+        <tr>
+          <td>setAccountId</td>
+          <td>$accountId - string</td>
+          <td>You can associate the existing account to the converting Lead.</td>
+        </tr>
+        <tr>
+          <td>setContactId</td>
+          <td>$contactId - string</td>
+          <td>You can associate the existing contact to the converting Lead.</td>
+        </tr>
+        <tr>
+          <td>setOverwriteAccountName</td>
+          <td>$overwrite - bool</td>
+          <td>If true, then the account name will be replaced by the company name from Lead while associating with the existing account.
+              If false, then association will only happen. However, if you set it true without giving account using setAccountId(), the working of this method remains unchanged.
+          </td>
+        </tr>
+        <tr>
+          <td>withEmptyFields</td>
+          <td> - none -</td>
+          <td>Include the empty fields in the response.</td>
+        </tr>
+      </table>
+
+      <br>
+      <pre><code class="language-php">
+      use CristianPontes\ZohoCRMClient\ZohoCRMClient;
+
+      $client = new ZohoCRMClient('Leads', 'YourAuthToken');
+
+      $result = $client->convertLead()
+          ->setLeadId($leadId)
+          ->setCreatePotential(true)
+          ->setNotifyLeadOwner(false)
+          ->setNotifyNewEntityOwner(false)
+          ->addRecord(array(
+              'Potential Name' => 'Samplepotential',
+              'Potential Stage' => 'Qualification',
+          ))
+          ->request();
+
+      print_r($result);
+
+      // Sample response:
+
+      Array
+      (
+          [Account] => 161789000005836001
+          [Potential] => 161789000005848039
+          [Contact] => 161789000005836003
+      )
       </code></pre>
       <br><br>
 
