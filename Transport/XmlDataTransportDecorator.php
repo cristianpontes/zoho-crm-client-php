@@ -2,6 +2,7 @@
 namespace CristianPontes\ZohoCRMClient\Transport;
 
 use CristianPontes\ZohoCRMClient\Exception;
+use CristianPontes\ZohoCRMClient\Request\ConvertLead;
 use CristianPontes\ZohoCRMClient\Response;
 use CristianPontes\ZohoCRMClient\ZohoError;
 
@@ -40,8 +41,12 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
         $this->method = $method;
         $this->call_params = $paramList;
 
-        if (array_key_exists('xmlData', $paramList)) {
-            $paramList['xmlData'] = $this->encodeRecords($paramList['xmlData']);
+        if ($this->method == 'convertLead') {
+            $paramList['xmlData'] = $this->encodeRequestConvertLead($paramList);
+        } else {
+            if (array_key_exists('xmlData', $paramList)) {
+                $paramList['xmlData'] = $this->encodeRecords($paramList['xmlData']);
+            }
         }
 
         $response = $this->transport->call($module, $method, $paramList);
@@ -50,7 +55,40 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
     }
 
     /**
+     * 
+     * @param array $paramList
+     * @return string XML representation of the records
+     */
+    private function encodeRequestConvertLead(array $paramList)
+    {
+        $root = new SimpleXMLElement('<Potentials></Potentials>');
+
+        // row 1 (options)
+        foreach (ConvertLead::OPTION_FIELDS as $optionName) {
+            if (isset($paramList[$optionName])) {
+                $options[$optionName] = $paramList[$optionName];
+            }
+        }
+        $row = $root->addChild('row');
+        $row->addAttribute('no', 1);
+        $this->encodeRecord($options, 'option', $row);
+
+        // row 2 (data)
+        if (array_key_exists('xmlData', $paramList)) {
+            $record = $paramList['xmlData'];
+            if ($record) {
+                $row = $root->addChild('row');
+                $row->addAttribute('no', 2);
+                $this->encodeRecord($record, 'FL', $row);
+            }
+        }
+        return $root->asXML();
+    }
+
+    /**
      * @param array $records
+     * @param string $rootName
+     * @param array $options
      * @throws \CristianPontes\ZohoCRMClient\Exception\RuntimeException
      * @return string XML representation of the records
      */
@@ -62,30 +100,42 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
             $row = $root->addChild('row');
             $row->addAttribute('no', $no + 1);
 
-            foreach ($record as $key => $value)
-            {
-                if ($value instanceof \DateTime)
-                {
-                    if ($value->format('His') === '000000') {
-                        $value = $value->format('m/d/Y');
-                    } else {
-                        $value = $value->format('Y-m-d H:i:s');
-                    }
-                }
-
-                $keyValue = $row->addChild('FL');
-                $keyValue->addAttribute('val', $key);
-
-                if(is_array($value)) {
-                   $this->parseNestedValues($value, $keyValue);
-                }
-                else {
-                    $keyValue[0] = $value;
-                }
-            }
+            $this->encodeRecord($record, 'FL', $row);
         }
 
         return $root->asXML();
+    }
+
+    /**
+     * Encodes a request record
+     * @param array $record
+     * @param string $childName XML node name
+     * @param SimpleXMLElement $xml
+     * @return string XML representation of the record
+     */
+    private function encodeRecord($record, $childName, &$xml)
+    {
+        foreach ($record as $key => $value)
+        {
+            if ($value instanceof \DateTime)
+            {
+                if ($value->format('His') === '000000') {
+                    $value = $value->format('m/d/Y');
+                } else {
+                    $value = $value->format('Y-m-d H:i:s');
+                }
+            }
+
+            $keyValue = $xml->addChild($childName);
+            $keyValue->addAttribute('val', $key);
+
+            if(is_array($value)) {
+               $this->parseNestedValues($value, $keyValue);
+            }
+            else {
+                $keyValue[0] = $value;
+            }
+        }
     }
 
     /**
@@ -166,6 +216,10 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
 
         if ($this->method == 'getDeletedRecordIds') {
             return $this->parseResponseGetDeletedRecordIds($xml);
+        }
+
+        if ($this->method == 'convertLead') {
+            return $this->parseResponseConvertLead($xml);
         }
 
         if (isset($xml->result->{$this->module})) {
@@ -310,6 +364,20 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
     {
         $ids = explode(',', (string) $xml->result->DeletedIDs);
         return new Response\Record($ids, 1);
+    }
+
+    /**
+     * @param $xml
+     * @return array
+     */
+    private function parseResponseConvertLead($xml)
+    {
+        $records = array();
+        foreach ($xml as $row) {
+            $records[$row->getName()] = (string) $row;
+        }
+
+        return $records;
     }
 
     /**

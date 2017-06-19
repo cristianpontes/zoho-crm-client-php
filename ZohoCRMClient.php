@@ -90,6 +90,14 @@ class ZohoCRMClient implements LoggerAwareInterface
     }
 
     /**
+     * @return Request\ConvertLead
+     */
+    public function convertLead()
+    {
+        return new Request\ConvertLead($this->request());
+    }
+
+    /**
      * @return Request\GetFields
      */
     public function getFields()

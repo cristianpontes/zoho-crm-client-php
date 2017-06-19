@@ -64,6 +64,7 @@ echo "</pre>";
 + downloadFile
 + deleteFile
 + getFields
++ convertLead
 
 ## Documentation
 
