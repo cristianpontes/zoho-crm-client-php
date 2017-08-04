@@ -19,7 +19,7 @@ class ZohoCRMClient implements LoggerAwareInterface
     /** @var LoggerInterface */
     private $logger;
 
-    public function __construct($module, $authToken)
+    public function __construct($module, $authToken, $domain = "com")
     {
         $this->module = $module;
 
@@ -31,7 +31,7 @@ class ZohoCRMClient implements LoggerAwareInterface
                         $authToken,
                         new Transport\BuzzTransport(
                             new \Buzz\Browser(new \Buzz\Client\Curl()),
-                            'https://crm.zoho.com/crm/private/xml/'
+                            'https://crm.zoho.'.$domain.'/crm/private/xml/'
                         )
                     )
                 );
