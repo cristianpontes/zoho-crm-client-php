@@ -1,6 +1,9 @@
 <?php
+
 namespace CristianPontes\ZohoCRMClient;
 
+use Buzz\Browser;
+use Buzz\Client\Curl;
 use CristianPontes\ZohoCRMClient\Request;
 use CristianPontes\ZohoCRMClient\Transport;
 use Psr\Log\LoggerAwareInterface;
@@ -19,22 +22,31 @@ class ZohoCRMClient implements LoggerAwareInterface
     /** @var LoggerInterface */
     private $logger;
 
-    public function __construct($module, $authToken, $domain = "com")
+    /**
+     * ZohoCRMClient constructor.
+     * @param $module
+     * @param $authToken
+     * @param string $domain
+     * @param int $timeout
+     */
+    public function __construct($module, $authToken, $domain = 'com', $timeout = 5)
     {
         $this->module = $module;
 
         if ($authToken instanceof Transport\Transport) {
             $this->transport = $authToken;
         } else {
+            $curl_client = new Curl();
+            $curl_client->setTimeout($timeout);
             $this->transport = new Transport\XmlDataTransportDecorator(
-                    new Transport\AuthenticationTokenTransportDecorator(
-                        $authToken,
-                        new Transport\BuzzTransport(
-                            new \Buzz\Browser(new \Buzz\Client\Curl()),
-                            'https://crm.zoho.'.$domain.'/crm/private/xml/'
-                        )
+                new Transport\AuthenticationTokenTransportDecorator(
+                    $authToken,
+                    new Transport\BuzzTransport(
+                        new Browser($curl_client),
+                        'https://crm.zoho.' . $domain . '/crm/private/xml/'
                     )
-                );
+                )
+            );
         }
     }
 
@@ -50,6 +62,15 @@ class ZohoCRMClient implements LoggerAwareInterface
         if ($this->transport instanceof LoggerAwareInterface) {
             $this->transport->setLogger($logger);
         }
+    }
+
+    /**
+     * Sets the Zoho CRM module, overriding the the actual value
+     * @param $module
+     */
+    public function setModule($module)
+    {
+        $this->module = $module;
     }
 
     /**

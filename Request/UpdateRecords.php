@@ -51,6 +51,10 @@ class UpdateRecords extends AbstractRequest
     }
 
     /**
+     * The workflow rules are only triggered for API V2.
+     * The API version will be changed automatically to this version
+     * When the request has only 1 record.
+     * @see https://www.zoho.eu/crm/help/api/insertrecords.html#Insert_Multiple_records (Notes section)
      * @return UpdateRecords
      */
     public function triggerWorkflow()
@@ -91,6 +95,10 @@ class UpdateRecords extends AbstractRequest
      */
     public function request()
     {
+        if(count($this->records) < 2) {
+            $this->request->setParam('version', 2);
+        }
+
         return $this->request
             ->setParam('xmlData', $this->records)
             ->request();

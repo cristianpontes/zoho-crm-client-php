@@ -27,6 +27,12 @@ class ZohoCRMClientTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($request instanceof GetRecords);
     }
 
+    public function testSetModule()
+    {
+        $this->client->setModule('Contacts');
+        $this->assertEquals('Contacts', $this->client->publicRequest()->getModule());
+    }
+
     public function testGetRecordById()
     {
         $request = $this->client->getRecordById();

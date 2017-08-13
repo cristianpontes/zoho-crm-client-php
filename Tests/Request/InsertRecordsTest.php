@@ -20,7 +20,7 @@ class InsertRecordsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(4, $this->request->getParam('version'));
     }
 
-    public function testRecords()
+    public function testSingleRecord()
     {
         $record = array('First Name' => 'Cristian', 'Last Name' => 'Pontes');
         $this->insertRecords->addRecord($record);
@@ -29,7 +29,20 @@ class InsertRecordsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($this->insertRecords->request());
 
-        $this->assertEquals(array('version' => 4, 'xmlData' => array($record)), $this->transport->paramList);
+        $this->assertEquals(array('version' => 2, 'xmlData' => array($record)), $this->transport->paramList);
+    }
+
+    public function testMultipleRecords()
+    {
+        $record = array('First Name' => 'Cristian', 'Last Name' => 'Pontes');
+        $this->insertRecords->addRecord($record);
+        $this->insertRecords->addRecord($record);
+
+        $this->transport->response = true;
+
+        $this->assertTrue($this->insertRecords->request());
+
+        $this->assertEquals(array('version' => 4, 'xmlData' => array($record, $record)), $this->transport->paramList);
     }
 
     public function testTriggerWorkflow()

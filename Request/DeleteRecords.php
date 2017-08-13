@@ -25,7 +25,7 @@ class DeleteRecords extends AbstractRequest
      * @param $id
      * @return DeleteRecords
      */
-    public function id($id){
+    public function id($id) {
         $this->request->setParam('id', $id);
         return $this;
     }

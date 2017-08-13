@@ -33,14 +33,25 @@ class UpdateRecordsTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testAddRecord()
+    public function testSingleRecord()
     {
         $this->updateRecords->addRecord(array('abc123'));
 
         $this->transport->response = true;
 
         $this->assertTrue($this->updateRecords->request());
-        $this->assertEquals(array('version' => 4, 'xmlData' =>  array(array('abc123'))), $this->transport->paramList);
+        $this->assertEquals(array('version' => 2, 'xmlData' =>  array(array('abc123'))), $this->transport->paramList);
+    }
+
+    public function testMultipleRecords()
+    {
+        $this->updateRecords->addRecord(array('abc123'));
+        $this->updateRecords->addRecord(array('abc123'));
+
+        $this->transport->response = true;
+
+        $this->assertTrue($this->updateRecords->request());
+        $this->assertEquals(array('version' => 4, 'xmlData' =>  array(array('abc123'), array('abc123'))), $this->transport->paramList);
     }
 
     public function testTriggerWorkflow()
