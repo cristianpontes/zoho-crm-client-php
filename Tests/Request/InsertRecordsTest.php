@@ -39,6 +39,13 @@ class InsertRecordsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('true', $this->request->getParam('wfTrigger'));
     }
 
+    public function testTriggerAssignmentRule()
+    {
+        $ruleId = 99001321231213;
+        $this->insertRecords->triggerAssignmentRule($ruleId);
+        $this->assertEquals($ruleId, $this->request->getParam('larid'));
+    }
+
     public function testOnDuplicate()
     {
         $this->insertRecords->onDuplicateUpdate();
@@ -64,4 +71,3 @@ class InsertRecordsTest extends \PHPUnit_Framework_TestCase
         $this->insertRecords = new Request\InsertRecords($this->request);
     }
 }
- 

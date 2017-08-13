@@ -52,6 +52,16 @@ class InsertRecords extends AbstractRequest
     }
 
     /**
+     * @param int $ruleId
+     * @return InsertRecords
+     */
+    public function triggerAssignmentRule($ruleId)
+    {
+        $this->request->setParam('larid', $ruleId);
+        return $this;
+    }
+
+    /**
      * @return InsertRecords
      */
     public function onDuplicateUpdate()
