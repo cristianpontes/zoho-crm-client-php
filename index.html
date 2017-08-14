@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>Zoho CRM Client for PHP by cristianpontes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,34 +12,41 @@
     <script type="text/javascript" src="js/prism.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-      ga('create', 'UA-70412018-8', 'auto');
-      ga('send', 'pageview');
+        ga('create', 'UA-70412018-8', 'auto');
+        ga('send', 'pageview');
 
     </script>
-  </head>
-  <body>
+</head>
+<body>
 
-    <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
-    <section class="page-header">
-      <h1 class="project-name">Zoho CRM Client for PHP</h1>
-      <h2>Provides a clean readable PHP API to the Zoho Rest API</h2>
-      <h2 class="project-tagline"></h2>
-      <a href="https://github.com/cristianpontes/zoho-crm-client-php" class="btn">View on GitHub</a>
-      <a href="https://github.com/cristianpontes/zoho-crm-client-php/zipball/1.0.0" class="btn">Download .zip</a>
-      <a href="https://github.com/cristianpontes/zoho-crm-client-php/tarball/1.0.0" class="btn">Download .tar.gz</a>
-    </section>
+<a href="#" id="back-to-top" title="Back to top">&uarr;</a>
+<section class="page-header">
+    <h1 class="project-name">Zoho CRM Client for PHP</h1>
+    <h2>Provides a clean readable PHP API to the Zoho Rest API</h2>
+    <h2 class="project-tagline"></h2>
+    <a href="https://github.com/cristianpontes/zoho-crm-client-php" class="btn">View on GitHub</a>
+    <a href="https://github.com/cristianpontes/zoho-crm-client-php/zipball/1.6" class="btn">Download .zip</a>
+    <a href="https://github.com/cristianpontes/zoho-crm-client-php/tarball/1.6" class="btn">Download .tar.gz</a>
+</section>
 
-    <section class="main-content">
-      <img src="https://travis-ci.org/cristianpontes/zoho-crm-client-php.svg?branch=1.0.0">
-      <img src="https://poser.pugx.org/cristianpontes/zoho-crm-client-php/v/stable" alt="">
-      <img src="https://poser.pugx.org/cristianpontes/zoho-crm-client-php/license">
-      <h2><b>Documentation</b></h2>
-      <ul>
+<section class="main-content">
+    <img src="https://travis-ci.org/cristianpontes/zoho-crm-client-php.svg?branch=1.6">
+    <img src="https://poser.pugx.org/cristianpontes/zoho-crm-client-php/v/stable" alt="">
+    <img src="https://poser.pugx.org/cristianpontes/zoho-crm-client-php/license">
+    <h2><b>Documentation</b></h2>
+    <ul>
         <li><a href="#getRecords">getRecords</a></li>
         <li><a href="#insertRecords">insertRecords</a></li>
         <li><a href="#updateRecords">updateRecords</a></li>
@@ -48,71 +55,76 @@
         <li><a href="#getRelatedRecords">getRelatedRecords</a></li>
         <li><a href="#getRecordById">getRecordById</a></li>
         <li><a href="#searchRecords">searchRecords</a></li>
+        <li><a href="#getSearchRecordsByPDC">getSearchRecordsByPDC</a></li>
         <li><a href="#uploadFile">uploadFile</a></li>
         <li><a href="#downloadFile">downloadFile</a></li>
         <li><a href="#deleteFile">deleteFile</a></li>
         <li><a href="#getFields">getFields</a></li>
         <li><a href="#convertLead">convertLead</a></li>
-      </ul>
-      <br>
+        <li><a href="#updateRelatedRecords">updateRelatedRecords</a></li>
+    </ul>
+    <br>
 
-      <h3 id="getRecords"><b>getRecords</b></h3>
-      <p>GetRecords API Call</p>
-      <p>You can use the getRecords method to fetch all users data specified in the API request</p>
-      <p>Check: <a href="https://www.zoho.com/crm/help/api/getrecords.html" target="_blank">https://www.zoho.com/crm/help/api/getrecords.html</a></p>
+    <h3 id="getRecords"><b>getRecords</b></h3>
+    <p>GetRecords API Call</p>
+    <p>You can use the getRecords method to fetch all users data specified in the API request</p>
+    <p>Check: <a href="https://www.zoho.com/crm/help/api/getrecords.html" target="_blank">https://www.zoho.com/crm/help/api/getrecords.html</a>
+    </p>
 
-      <p><b>Available functions in the method:</b></p>
-      <table>
+    <p><b>Available functions in the method:</b></p>
+    <table>
         <tr>
-          <th>Name</th>
-          <th>Params</th>
-          <th>Description</th>
+            <th>Name</th>
+            <th>Params</th>
+            <th>Description</th>
         </tr>
         <tr>
-          <td>selectColumns</td>
-          <td>$columns - array</td>
-          <td>You can call this function passing an array with the columns or passing columns one by one like individual params.</td>
+            <td>selectColumns</td>
+            <td>$columns - array</td>
+            <td>You can call this function passing an array with the columns or passing columns one by one like
+                individual params.
+            </td>
         </tr>
         <tr>
-          <td>fromIndex</td>
-          <td>$index - init</td>
-          <td>From where you want to fetch the records. By default, one call just take the 20 first records.</td>
+            <td>fromIndex</td>
+            <td>$index - init</td>
+            <td>From where you want to fetch the records. By default, one call just take the 20 first records.</td>
         </tr>
         <tr>
-          <td>toIndex</td>
-          <td>$index - init</td>
-          <td>Until where you want to fetch the records. One call only can fetch 200 records per request.</td>
+            <td>toIndex</td>
+            <td>$index - init</td>
+            <td>Until where you want to fetch the records. One call only can fetch 200 records per request.</td>
         </tr>
         <tr>
-          <td>sortBy</td>
-          <td>$column - string</td>
-          <td>Sort the request by a column.</td>
+            <td>sortBy</td>
+            <td>$column - string</td>
+            <td>Sort the request by a column.</td>
         </tr>
         <tr>
-          <td>sortAsc</td>
-          <td> - none -</td>
-          <td>Sort the request in ascending order using the column setting in the sortBy function.</td>
+            <td>sortAsc</td>
+            <td> - none -</td>
+            <td>Sort the request in ascending order using the column setting in the sortBy function.</td>
         </tr>
         <tr>
-          <td>sortDesc</td>
-          <td> - none -</td>
-          <td>Sort the request in descending order using the column setting in the sortBy function.</td>
+            <td>sortDesc</td>
+            <td> - none -</td>
+            <td>Sort the request in descending order using the column setting in the sortBy function.</td>
         </tr>
         <tr>
-          <td>since</td>
-          <td>$timestamp - \DateTime </td>
-          <td>If you specify the time, modified data will be fetched after the configured time.</td>
+            <td>since</td>
+            <td>$timestamp - \DateTime</td>
+            <td>If you specify the time, modified data will be fetched after the configured time.</td>
         </tr>
 
         <tr>
-          <td>withEmptyFields</td>
-          <td> - none -</td>
-          <td>Include the empty fields in the response.</td>
+            <td>withEmptyFields</td>
+            <td> - none -</td>
+            <td>Include the empty fields in the response.</td>
         </tr>
-      </table>
+    </table>
 
-      <br>
-      <pre><code class="language-php">
+    <br>
+    <pre><code class="language-php">
       use CristianPontes\ZohoCRMClient\ZohoCRMClient;
 
       $client = new ZohoCRMClient('Leads', 'YourAuthToken');
@@ -147,54 +159,55 @@
       )
       ... continues ...
       </code></pre>
-      <br><br>
+    <br><br>
 
-      <h3 id="insertRecords"><b>insertRecords</b></h3>
-      <p>InsertRecords API Call</p>
-      <p>You can use the insertRecords method to insert records into the required Zoho CRM module.</p>
-      <p>Check: <a href="https://www.zoho.com/crm/help/api/insertrecords.html" target="_blank">https://www.zoho.com/crm/help/api/insertrecords.html</a></p>
+    <h3 id="insertRecords"><b>insertRecords</b></h3>
+    <p>InsertRecords API Call</p>
+    <p>You can use the insertRecords method to insert records into the required Zoho CRM module.</p>
+    <p>Check: <a href="https://www.zoho.com/crm/help/api/insertrecords.html" target="_blank">https://www.zoho.com/crm/help/api/insertrecords.html</a>
+    </p>
 
-      <p><b>Available functions in the method:</b></p>
-      <table>
+    <p><b>Available functions in the method:</b></p>
+    <table>
         <tr>
-          <th>Name</th>
-          <th>Params</th>
-          <th>Description</th>
+            <th>Name</th>
+            <th>Params</th>
+            <th>Description</th>
         </tr>
         <tr>
-          <td>addRecord</td>
-          <td>$record - array</td>
-          <td>Add a record as a simple associative array, like Field -> Value.</td>
+            <td>addRecord</td>
+            <td>$record - array</td>
+            <td>Add a record as a simple associative array, like Field -> Value.</td>
         </tr>
         <tr>
-          <td>setRecords</td>
-          <td>$records - array</td>
-          <td>Add multiple records as a simple associative array, like Field -> Value.</td>
+            <td>setRecords</td>
+            <td>$records - array</td>
+            <td>Add multiple records as a simple associative array, like Field -> Value.</td>
         </tr>
         <tr>
-          <td>onDuplicateError</td>
-          <td> - none -</td>
-          <td>Check the duplicate records and throw an error.</td>
+            <td>onDuplicateError</td>
+            <td> - none -</td>
+            <td>Check the duplicate records and throw an error.</td>
         </tr>
         <tr>
-          <td>onDuplicateUpdate</td>
-          <td> - none -</td>
-          <td>Check the duplicate records, if exists, update the same.</td>
+            <td>onDuplicateUpdate</td>
+            <td> - none -</td>
+            <td>Check the duplicate records, if exists, update the same.</td>
         </tr>
         <tr>
-          <td>requireApproval</td>
-          <td> - none -</td>
-          <td>By default, records are inserted directly. To keep the records in approval mode, use this function.</td>
+            <td>requireApproval</td>
+            <td> - none -</td>
+            <td>By default, records are inserted directly. To keep the records in approval mode, use this function.</td>
         </tr>
         <tr>
-          <td>triggerWorkflow</td>
-          <td> - none -</td>
-          <td>Trigger the workflow rule while inserting record.</td>
+            <td>triggerWorkflow</td>
+            <td> - none -</td>
+            <td>Trigger the workflow rule while inserting record.</td>
         </tr>
-      </table>
+    </table>
 
-      <br>
-      <pre><code class="language-php">
+    <br>
+    <pre><code class="language-php">
       use CristianPontes\ZohoCRMClient\ZohoCRMClient;
 
       $client = new ZohoCRMClient('Contacts', 'YourAuthToken');
@@ -229,11 +242,13 @@
       }
       </code></pre>
 
-      <p>In some cases you will need to use more complex data in your records, I.E: In the SalesOrders module, if you want to add some products to your record, pass the 'Product Details' array will be necessary</p>
-      <p>Reference: <a href="https://www.zoho.com/crm/help/api/insertrecords.html#SalesOrders" target="_blank">InsertRecords#SalesOrders</a></p>
-      <p>Here is an XML example record, let's do the same, but with the ZohoCRMClient:</p>
+    <p>In some cases you will need to use more complex data in your records, I.E: In the SalesOrders module, if you want
+        to add some products to your record, pass the 'Product Details' array will be necessary</p>
+    <p>Reference: <a href="https://www.zoho.com/crm/help/api/insertrecords.html#SalesOrders" target="_blank">InsertRecords#SalesOrders</a>
+    </p>
+    <p>Here is an XML example record, let's do the same, but with the ZohoCRMClient:</p>
 
-      <pre><code class="language-xml">
+    <pre><code class="language-xml">
         &#60;SalesOrders&#62;
           &#60;row no="1"&#62;
             &#60;FL val="Subject"&#62;Subject Test&#60;/FL&#62;
@@ -256,8 +271,8 @@
           &#60;/row&#62;
         &#60;/SalesOrders&#62;
       </code></pre>
-      <p>The code would be:</p>
-      <pre><code class="language-php">
+    <p>The code would be:</p>
+    <pre><code class="language-php">
       use CristianPontes\ZohoCRMClient\ZohoCRMClient;
 
       $client = new ZohoCRMClient('SalesOrders', 'YourAuthToken');
@@ -291,55 +306,57 @@
           ...
       }
       </code></pre>
-      <p>Notice the <b>"@type"</b> flag that I use in each product, that is simple way to declare what should be the parent XML tag for that array, in order to avoid unnecessary array indexing... </p>
-      <br>
+    <p>Notice the <b>"@type"</b> flag that I use in each product, that is simple way to declare what should be the
+        parent XML tag for that array, in order to avoid unnecessary array indexing... </p>
+    <br>
 
-      <h3 id="updateRecords"><b>updateRecords</b></h3>
-      <p>UpdateRecords API Call</p>
-      <p>You can use the updateRecords method to update or modify the records in Zoho CRM.</p>
-      <p>Check: <a href="https://www.zoho.com/crm/help/api/updaterecords.html" target="_blank">https://www.zoho.com/crm/help/api/updaterecords.html</a></p>
+    <h3 id="updateRecords"><b>updateRecords</b></h3>
+    <p>UpdateRecords API Call</p>
+    <p>You can use the updateRecords method to update or modify the records in Zoho CRM.</p>
+    <p>Check: <a href="https://www.zoho.com/crm/help/api/updaterecords.html" target="_blank">https://www.zoho.com/crm/help/api/updaterecords.html</a>
+    </p>
 
-      <p><b>Available functions in the method:</b></p>
-      <table>
+    <p><b>Available functions in the method:</b></p>
+    <table>
         <tr>
-          <th>Name</th>
-          <th>Params</th>
-          <th>Description</th>
+            <th>Name</th>
+            <th>Params</th>
+            <th>Description</th>
         </tr>
         <tr>
-          <td>addRecord</td>
-          <td>$record - array</td>
-          <td>Add a record as a simple associative array, like Field -> Value.</td>
+            <td>addRecord</td>
+            <td>$record - array</td>
+            <td>Add a record as a simple associative array, like Field -> Value.</td>
         </tr>
         <tr>
-          <td>setRecords</td>
-          <td>$records - array</td>
-          <td>Add multiple records as a simple associative array, like Field -> Value.</td>
+            <td>setRecords</td>
+            <td>$records - array</td>
+            <td>Add multiple records as a simple associative array, like Field -> Value.</td>
         </tr>
         <tr>
-          <td>onDuplicateError</td>
-          <td> - none -</td>
-          <td>Check the duplicate records and throw an error.</td>
+            <td>onDuplicateError</td>
+            <td> - none -</td>
+            <td>Check the duplicate records and throw an error.</td>
         </tr>
         <tr>
-          <td>onDuplicateUpdate</td>
-          <td> - none -</td>
-          <td>Check the duplicate records, if exists, update the same.</td>
+            <td>onDuplicateUpdate</td>
+            <td> - none -</td>
+            <td>Check the duplicate records, if exists, update the same.</td>
         </tr>
         <tr>
-          <td>requireApproval</td>
-          <td> - none -</td>
-          <td>By default, records are inserted directly. To keep the records in approval mode, use this function.</td>
+            <td>requireApproval</td>
+            <td> - none -</td>
+            <td>By default, records are inserted directly. To keep the records in approval mode, use this function.</td>
         </tr>
         <tr>
-          <td>triggerWorkflow</td>
-          <td> - none -</td>
-          <td>Trigger the workflow rule while inserting record.</td>
+            <td>triggerWorkflow</td>
+            <td> - none -</td>
+            <td>Trigger the workflow rule while inserting record.</td>
         </tr>
-      </table>
+    </table>
 
-      <br>
-      <pre><code class="language-php">
+    <br>
+    <pre><code class="language-php">
       use CristianPontes\ZohoCRMClient\ZohoCRMClient;
 
       $client = new ZohoCRMClient('Contacts', 'YourAuthToken');
@@ -367,29 +384,30 @@
           ...
       }
       </code></pre>
-      <br><br>
+    <br><br>
 
-      <h3 id="deleteRecords"><b>deleteRecords</b></h3>
-      <p>DeleteRecords API Call</p>
-      <p>You can use this method to delete the selected record (you must specify unique ID of the record).</p>
-      <p>Check: <a href="https://www.zoho.com/crm/help/api/deleterecords.html" target="_blank">https://www.zoho.com/crm/help/api/deleterecords.html</a></p>
+    <h3 id="deleteRecords"><b>deleteRecords</b></h3>
+    <p>DeleteRecords API Call</p>
+    <p>You can use this method to delete the selected record (you must specify unique ID of the record).</p>
+    <p>Check: <a href="https://www.zoho.com/crm/help/api/deleterecords.html" target="_blank">https://www.zoho.com/crm/help/api/deleterecords.html</a>
+    </p>
 
-      <p><b>Available functions in the method:</b></p>
-      <table>
+    <p><b>Available functions in the method:</b></p>
+    <table>
         <tr>
-          <th>Name</th>
-          <th>Params</th>
-          <th>Description</th>
+            <th>Name</th>
+            <th>Params</th>
+            <th>Description</th>
         </tr>
         <tr>
-          <td>id</td>
-          <td>$id - string</td>
-          <td>Specify unique ID of the record</td>
+            <td>id</td>
+            <td>$id - string</td>
+            <td>Specify unique ID of the record</td>
         </tr>
-      </table>
+    </table>
 
-      <br>
-      <pre><code class="language-php">
+    <br>
+    <pre><code class="language-php">
       use CristianPontes\ZohoCRMClient\ZohoCRMClient;
 
       $client = new ZohoCRMClient('Contacts', 'YourAuthToken');
@@ -401,41 +419,41 @@
       // returns bool
       var_dump($record->isDeleted());
       </code></pre>
-      <br><br>
+    <br><br>
 
 
+    <h3 id="getDeletedRecordIds"><b>getDeletedRecordIds</b></h3>
+    <p>DetDeletedRecordIds API Call</p>
+    <p>You can use the getDeletedRecordIds method to retrieve the list of IDs of deleted records from recycle bin.</p>
+    <p>Check: <a href="https://www.zoho.com/crm/help/api/getdeletedrecordids.html" target="_blank">https://www.zoho.com/crm/help/api/getdeletedrecordids.html</a>
+    </p>
 
-      <h3 id="getDeletedRecordIds"><b>getDeletedRecordIds</b></h3>
-      <p>DetDeletedRecordIds API Call</p>
-      <p>You can use the getDeletedRecordIds method to retrieve the list of IDs of deleted records from recycle bin.</p>
-      <p>Check: <a href="https://www.zoho.com/crm/help/api/getdeletedrecordids.html" target="_blank">https://www.zoho.com/crm/help/api/getdeletedrecordids.html</a></p>
-
-      <p><b>Available functions in the method:</b></p>
-      <table>
+    <p><b>Available functions in the method:</b></p>
+    <table>
         <tr>
-          <th>Name</th>
-          <th>Params</th>
-          <th>Description</th>
+            <th>Name</th>
+            <th>Params</th>
+            <th>Description</th>
         </tr>
         <tr>
-          <td>fromIndex</td>
-          <td>$index - init</td>
-          <td>From where you want to fetch the records. By default, one call just take the 20 first records.</td>
+            <td>fromIndex</td>
+            <td>$index - init</td>
+            <td>From where you want to fetch the records. By default, one call just take the 20 first records.</td>
         </tr>
         <tr>
-          <td>toIndex</td>
-          <td>$index - init</td>
-          <td>Until where you want to fetch the records. One call only can fetch 200 records per request.</td>
+            <td>toIndex</td>
+            <td>$index - init</td>
+            <td>Until where you want to fetch the records. One call only can fetch 200 records per request.</td>
         </tr>
         <tr>
-          <td>since</td>
-          <td>$timestamp - \DateTime </td>
-          <td>If you specify the time, modified data will be fetched after the configured time.</td>
+            <td>since</td>
+            <td>$timestamp - \DateTime</td>
+            <td>If you specify the time, modified data will be fetched after the configured time.</td>
         </tr>
-      </table>
+    </table>
 
-      <br>
-      <pre><code class="language-php">
+    <br>
+    <pre><code class="language-php">
       use CristianPontes\ZohoCRMClient\ZohoCRMClient;
 
       $client = new ZohoCRMClient('Contacts', 'YourAuthToken');
@@ -450,52 +468,54 @@
          print_r($id);
       }
       </code></pre>
-      <br><br>
+    <br><br>
 
 
+    <h3 id="getRelatedRecords"><b>getRelatedRecords</b></h3>
+    <p>GetRelatedRecords API Call</p>
+    <p>You can use the getRelatedRecords method to fetch related records. <br> For example: You can fetch Leads related
+        to a Campaign or fetch tasks related to an Account.</p>
+    <p>Check: <a href="https://www.zoho.com/crm/help/api/getrelatedrecords.html" target="_blank">https://www.zoho.com/crm/help/api/getrelatedrecords.html</a>
+    </p>
 
-      <h3 id="getRelatedRecords"><b>getRelatedRecords</b></h3>
-      <p>GetRelatedRecords API Call</p>
-      <p>You can use the getRelatedRecords method to fetch related records. <br> For example: You can fetch Leads related to a Campaign or fetch tasks related to an Account.</p>
-      <p>Check: <a href="https://www.zoho.com/crm/help/api/getrelatedrecords.html" target="_blank">https://www.zoho.com/crm/help/api/getrelatedrecords.html</a></p>
+    <p><b>Available functions in the method:</b></p>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Params</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>id</td>
+            <td>$id - string</td>
+            <td>The id of the record for which you want to fetch related records.</td>
+        </tr>
+        <tr>
+            <td>fromIndex</td>
+            <td>$index - init</td>
+            <td>From where you want to fetch the records. By default, one call just take the 20 first records.</td>
+        </tr>
+        <tr>
+            <td>toIndex</td>
+            <td>$index - init</td>
+            <td>Until where you want to fetch the records. One call only can fetch 200 records per request.</td>
+        </tr>
+        <tr>
+            <td>parentModule</td>
+            <td>$parentModule - string</td>
+            <td>Module for which you want to fetch the related records.<br>
+                Example: If you want to fetch Leads related to a Campaign, then Campaigns is your parent module.
+            </td>
+        </tr>
+        <tr>
+            <td>withEmptyFields</td>
+            <td> - none -</td>
+            <td>Include the empty fields in the response.</td>
+        </tr>
+    </table>
 
-      <p><b>Available functions in the method:</b></p>
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Params</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td>id</td>
-          <td>$id - string</td>
-          <td>The id of the record for which you want to fetch related records.</td>
-        </tr>
-        <tr>
-          <td>fromIndex</td>
-          <td>$index - init</td>
-          <td>From where you want to fetch the records. By default, one call just take the 20 first records.</td>
-        </tr>
-        <tr>
-          <td>toIndex</td>
-          <td>$index - init</td>
-          <td>Until where you want to fetch the records. One call only can fetch 200 records per request.</td>
-        </tr>
-        <tr>
-          <td>parentModule</td>
-          <td>$parentModule - string </td>
-          <td>Module for which you want to fetch the related records.<br>
-            Example: If you want to fetch Leads related to a Campaign, then Campaigns is your parent module.</td>
-        </tr>
-        <tr>
-          <td>withEmptyFields</td>
-          <td> - none -</td>
-          <td>Include the empty fields in the response.</td>
-        </tr>
-      </table>
-
-      <br>
-      <pre><code class="language-php">
+    <br>
+    <pre><code class="language-php">
       use CristianPontes\ZohoCRMClient\ZohoCRMClient;
 
       $client = new ZohoCRMClient('Attachments', 'YourAuthToken');
@@ -542,35 +562,36 @@
 
       ... continues ...
       </code></pre>
-      <br><br>
+    <br><br>
 
 
-      <h3 id="getRecordById"><b>getRecordById</b></h3>
-      <p>GetRecordById API Call</p>
-      <p>You can use this method to retrieve individual records by record ID.</p>
-      <p>Check: <a href="https://www.zoho.com/crm/help/api/getrecordbyid.html" target="_blank">https://www.zoho.com/crm/help/api/getrecordbyid.html</a></p>
+    <h3 id="getRecordById"><b>getRecordById</b></h3>
+    <p>GetRecordById API Call</p>
+    <p>You can use this method to retrieve individual records by record ID.</p>
+    <p>Check: <a href="https://www.zoho.com/crm/help/api/getrecordbyid.html" target="_blank">https://www.zoho.com/crm/help/api/getrecordbyid.html</a>
+    </p>
 
-      <p><b>Available functions in the method:</b></p>
-      <table>
+    <p><b>Available functions in the method:</b></p>
+    <table>
         <tr>
-          <th>Name</th>
-          <th>Params</th>
-          <th>Description</th>
+            <th>Name</th>
+            <th>Params</th>
+            <th>Description</th>
         </tr>
         <tr>
-          <td>id</td>
-          <td>$id - string</td>
-          <td>Specify unique ID of the record.</td>
+            <td>id</td>
+            <td>$id - string</td>
+            <td>Specify unique ID of the record.</td>
         </tr>
         <tr>
-          <td>withEmptyFields</td>
-          <td> - none -</td>
-          <td>Include the empty fields in the response.</td>
+            <td>withEmptyFields</td>
+            <td> - none -</td>
+            <td>Include the empty fields in the response.</td>
         </tr>
-      </table>
+    </table>
 
-      <br>
-      <pre><code class="language-php">
+    <br>
+    <pre><code class="language-php">
       use CristianPontes\ZohoCRMClient\ZohoCRMClient;
 
       $client = new ZohoCRMClient('Contacts', 'YourAuthToken');
@@ -581,56 +602,60 @@
 
       print_r($record);
       </code></pre>
-      <br><br>
+    <br><br>
 
 
+    <h3 id="searchRecords"><b>searchRecords</b></h3>
+    <p>SearchRecords API Call</p>
+    <p>You can use the searchRecords method to get the list of records that meet your search criteria.</p>
+    <p>Check: <a href="https://www.zoho.com/crm/help/api/searchrecords.html" target="_blank">https://www.zoho.com/crm/help/api/searchrecords.html</a>
+    </p>
 
-      <h3 id="searchRecords"><b>searchRecords</b></h3>
-      <p>SearchRecords API Call</p>
-      <p>You can use the searchRecords method to get the list of records that meet your search criteria.</p>
-      <p>Check: <a href="https://www.zoho.com/crm/help/api/searchrecords.html" target="_blank">https://www.zoho.com/crm/help/api/searchrecords.html</a></p>
+    <p><b>Available functions in the method:</b></p>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Params</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>selectColumns</td>
+            <td>$columns - array</td>
+            <td>You can call this function passing an array with the columns or passing columns one by one like
+                individual params.
+            </td>
+        </tr>
+        <tr>
+            <td>fromIndex</td>
+            <td>$index - init</td>
+            <td>From where you want to fetch the records. By default, one call just take the 20 first records.</td>
+        </tr>
+        <tr>
+            <td>toIndex</td>
+            <td>$index - init</td>
+            <td>Until where you want to fetch the records. One call only can fetch 200 records per request.</td>
+        </tr>
+        <tr>
+            <td>where</td>
+            <td>$field - string, $value - string</td>
+            <td>Search record by an equal criteria. Could be multiple 'wheres' into a single request.</td>
+        </tr>
+        <tr>
+            <td>orWhere</td>
+            <td>$field - string, $value - string</td>
+            <td>Search record by an equal criteria adding. This function adds a secondary alternative after established
+                'where(s)'. Could be multiple 'orWheres' into a single request.
+            </td>
+        </tr>
+        <tr>
+            <td>withEmptyFields</td>
+            <td> - none -</td>
+            <td>Include the empty fields in the response.</td>
+        </tr>
+    </table>
 
-      <p><b>Available functions in the method:</b></p>
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Params</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td>selectColumns</td>
-          <td>$columns - array</td>
-          <td>You can call this function passing an array with the columns or passing columns one by one like individual params.</td>
-        </tr>
-        <tr>
-          <td>fromIndex</td>
-          <td>$index - init</td>
-          <td>From where you want to fetch the records. By default, one call just take the 20 first records.</td>
-        </tr>
-        <tr>
-          <td>toIndex</td>
-          <td>$index - init</td>
-          <td>Until where you want to fetch the records. One call only can fetch 200 records per request.</td>
-        </tr>
-        <tr>
-          <td>where</td>
-          <td>$field - string, $value - string</td>
-          <td>Search record by an equal criteria. Could be multiple 'wheres' into a single request.</td>
-        </tr>
-        <tr>
-          <td>orWhere</td>
-          <td>$field - string, $value - string</td>
-          <td>Search record by an equal criteria adding. This function adds a secondary alternative after established 'where(s)'. Could be multiple 'orWheres' into a single request.</td>
-        </tr>
-        <tr>
-          <td>withEmptyFields</td>
-          <td> - none -</td>
-          <td>Include the empty fields in the response.</td>
-        </tr>
-      </table>
-
-      <br>
-      <pre><code class="language-php">
+    <br>
+    <pre><code class="language-php">
       use CristianPontes\ZohoCRMClient\ZohoCRMClient;
 
       $client = new ZohoCRMClient('Contacts', 'YourAuthToken');
@@ -645,41 +670,107 @@
           print_r($record->getData());
       }
       </code></pre>
-      <br><br>
+    <br><br>
 
+    <h3 id="getSearchRecordsByPDC"><b>getSearchRecordsByPDC</b></h3>
+    <p>GetSearchRecordsByPDC API Call</p>
+    <p>You can use this method to search the values based on predefined columns and custom lookup fields.</p>
+    <p>Check: <a href="https://www.zoho.com/crm/help/api/getsearchrecordsbypdc.html" target="_blank">https://www.zoho.com/crm/help/api/getsearchrecordsbypdc.html</a>
+    </p>
 
-
-      <h3 id="uploadFile"><b>uploadFile</b></h3>
-      <p>Uploadfile API Call</p>
-      <p>You can use this method to attach files to records.</p>
-      <p>Check: <a href="https://www.zoho.com/crm/help/api/uploadfile.html" target="_blank">https://www.zoho.com/crm/help/api/uploadfile.html</a></p>
-
-      <p><b>Available functions in the method:</b></p>
-      <table>
+    <p><b>Available functions in the method:</b></p>
+    <table>
         <tr>
-          <th>Name</th>
-          <th>Params</th>
-          <th>Description</th>
+            <th>Name</th>
+            <th>Params</th>
+            <th>Description</th>
         </tr>
         <tr>
-          <td>id</td>
-          <td>$id - init</td>
-          <td>Specify unique ID of the "record" or "note" to which the file has to be attached.</td>
+            <td>selectColumns</td>
+            <td>$columns - array</td>
+            <td>You can call this function passing an array with the columns or passing columns one by one like
+                individual params.
+            </td>
         </tr>
         <tr>
-          <td>attachLink</td>
-          <td>$link - string</td>
-          <td>Attach a external link to a record.</td>
+            <td>fromIndex</td>
+            <td>$index - init</td>
+            <td>From where you want to fetch the records. By default, one call just take the 20 first records.</td>
         </tr>
         <tr>
-          <td>uploadFromPath</td>
-          <td>$path - string</td>
-          <td>Upload the file input stream to a record, this must be the full path of the file. i.e: /home/path/to/file.extension.</td>
+            <td>toIndex</td>
+            <td>$index - init</td>
+            <td>Until where you want to fetch the records. One call only can fetch 200 records per request.</td>
         </tr>
-      </table>
+        <tr>
+            <td>searchColumn</td>
+            <td>$column - string</td>
+            <td>Specify the predefined search column.</td>
+        </tr>
+        <tr>
+            <td>searchValue</td>
+            <td>$value - string</td>
+            <td>Specify the value to be searched.</td>
+        </tr>
+        <tr>
+            <td>withEmptyFields</td>
+            <td> - none -</td>
+            <td>Include the empty fields in the response.</td>
+        </tr>
+    </table>
 
-      <br>
-      <pre><code class="language-php">
+    <br>
+    <pre><code class="language-php">
+      use CristianPontes\ZohoCRMClient\ZohoCRMClient;
+
+      $client = new ZohoCRMClient('Products', 'YourAuthToken');
+
+      $records = $client->getSearchRecordsByPDC()
+          ->searchColumn('vendorid')
+          ->searchValue('2000000017022')
+          ->request();
+
+      foreach ($records as $record){
+          print_r($record->getData());
+      }
+      </code></pre>
+    <br><br>
+
+
+    <h3 id="uploadFile"><b>uploadFile</b></h3>
+    <p>Uploadfile API Call</p>
+    <p>You can use this method to attach files to records.</p>
+    <p>Check: <a href="https://www.zoho.com/crm/help/api/uploadfile.html" target="_blank">https://www.zoho.com/crm/help/api/uploadfile.html</a>
+    </p>
+
+    <p><b>Available functions in the method:</b></p>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Params</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>id</td>
+            <td>$id - init</td>
+            <td>Specify unique ID of the "record" or "note" to which the file has to be attached.</td>
+        </tr>
+        <tr>
+            <td>attachLink</td>
+            <td>$link - string</td>
+            <td>Attach a external link to a record.</td>
+        </tr>
+        <tr>
+            <td>uploadFromPath</td>
+            <td>$path - string</td>
+            <td>Upload the file input stream to a record, this must be the full path of the file. i.e:
+                /home/path/to/file.extension.
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <pre><code class="language-php">
       use CristianPontes\ZohoCRMClient\ZohoCRMClient;
 
       $client = new ZohoCRMClient('Contacts', 'YourAuthToken');
@@ -696,35 +787,36 @@
       var_dump($record->isUploaded());
 
       </code></pre>
-      <br><br>
+    <br><br>
 
 
-      <h3 id="downloadFile"><b>downloadFile</b></h3>
-      <p>DownloadFile API Call</p>
-      <p>You can use this method to download files from CRM to your system.</p>
-      <p>Check: <a href="https://www.zoho.com/crm/help/api/downloadfile.html" target="_blank">https://www.zoho.com/crm/help/api/downloadfile.html</a></p>
+    <h3 id="downloadFile"><b>downloadFile</b></h3>
+    <p>DownloadFile API Call</p>
+    <p>You can use this method to download files from CRM to your system.</p>
+    <p>Check: <a href="https://www.zoho.com/crm/help/api/downloadfile.html" target="_blank">https://www.zoho.com/crm/help/api/downloadfile.html</a>
+    </p>
 
-      <p><b>Available functions in the method:</b></p>
-      <table>
+    <p><b>Available functions in the method:</b></p>
+    <table>
         <tr>
-          <th>Name</th>
-          <th>Params</th>
-          <th>Description</th>
+            <th>Name</th>
+            <th>Params</th>
+            <th>Description</th>
         </tr>
         <tr>
-          <td>id</td>
-          <td>$id - init</td>
-          <td>Specify unique ID of the attachment.</td>
+            <td>id</td>
+            <td>$id - init</td>
+            <td>Specify unique ID of the attachment.</td>
         </tr>
         <tr>
-          <td>setFilePath</td>
-          <td>$path - string</td>
-          <td>This must be the full path of the file. In this location the file will be saved.</td>
+            <td>setFilePath</td>
+            <td>$path - string</td>
+            <td>This must be the full path of the file. In this location the file will be saved.</td>
         </tr>
-      </table>
+    </table>
 
-      <br>
-      <pre><code class="language-php">
+    <br>
+    <pre><code class="language-php">
       use CristianPontes\ZohoCRMClient\ZohoCRMClient;
 
       $client = new ZohoCRMClient('Contacts', 'YourAuthToken');
@@ -734,30 +826,31 @@
           ->setFilePath('home/path/to/the/newfile.extension')
           ->request();
       </code></pre>
-      <br><br>
+    <br><br>
 
 
-      <h3 id="deleteFile"><b>deletefile</b></h3>
-      <p>DeleteFile API Call</p>
-      <p>You can use this method to delete files attached to records.</p>
-      <p>Check: <a href="https://www.zoho.com/crm/help/api/deletefile.html" target="_blank">https://www.zoho.com/crm/help/api/deletefile.html</a></p>
+    <h3 id="deleteFile"><b>deletefile</b></h3>
+    <p>DeleteFile API Call</p>
+    <p>You can use this method to delete files attached to records.</p>
+    <p>Check: <a href="https://www.zoho.com/crm/help/api/deletefile.html" target="_blank">https://www.zoho.com/crm/help/api/deletefile.html</a>
+    </p>
 
-      <p><b>Available functions in the method:</b></p>
-      <table>
+    <p><b>Available functions in the method:</b></p>
+    <table>
         <tr>
-          <th>Name</th>
-          <th>Params</th>
-          <th>Description</th>
+            <th>Name</th>
+            <th>Params</th>
+            <th>Description</th>
         </tr>
         <tr>
-          <td>id</td>
-          <td>$id - init</td>
-          <td>Specify unique ID of the attachment.</td>
+            <td>id</td>
+            <td>$id - init</td>
+            <td>Specify unique ID of the attachment.</td>
         </tr>
-      </table>
+    </table>
 
-      <br>
-      <pre><code class="language-php">
+    <br>
+    <pre><code class="language-php">
       use CristianPontes\ZohoCRMClient\ZohoCRMClient;
 
       $client = new ZohoCRMClient('Contacts', 'YourAuthToken');
@@ -769,16 +862,17 @@
       // returns bool
       var_dump($record->isDeleted());
       </code></pre>
-      <br><br>
+    <br><br>
 
 
-      <h3 id="getFields"><b>getFields</b></h3>
-      <p>GetFields API Call</p>
-      <p>You can use the getFields method to fetch details of the fields available in a particular module.</p>
-      <p>Check: <a href="https://www.zoho.com/crm/help/api/getfields.html" target="_blank">https://www.zoho.com/crm/help/api/getfields.html</a></p>
+    <h3 id="getFields"><b>getFields</b></h3>
+    <p>GetFields API Call</p>
+    <p>You can use the getFields method to fetch details of the fields available in a particular module.</p>
+    <p>Check: <a href="https://www.zoho.com/crm/help/api/getfields.html" target="_blank">https://www.zoho.com/crm/help/api/getfields.html</a>
+    </p>
 
-      <br>
-      <pre><code class="language-php">
+    <br>
+    <pre><code class="language-php">
       use CristianPontes\ZohoCRMClient\ZohoCRMClient;
 
       $client = new ZohoCRMClient('Contacts', 'YourAuthToken');
@@ -840,76 +934,80 @@
         )
         ... continues ...
       </code></pre>
-      <br><br>
+    <br><br>
 
-      <h3 id="convertLead"><b>convertLead</b></h3>
-      <p>ConvertLead API Call</p>
-      <p>You can use this method to convert Lead to potential, account and contact. You can also associate the existing contact or account to the converting Lead using this method.</p>
-      <p>Check: <a href="https://www.zoho.com/crm/help/api/convertlead.html" target="_blank">https://www.zoho.com/crm/help/api/convertlead.html</a></p>
+    <h3 id="convertLead"><b>convertLead</b></h3>
+    <p>ConvertLead API Call</p>
+    <p>You can use this method to convert Lead to potential, account and contact. You can also associate the existing
+        contact or account to the converting Lead using this method.</p>
+    <p>Check: <a href="https://www.zoho.com/crm/help/api/convertlead.html" target="_blank">https://www.zoho.com/crm/help/api/convertlead.html</a>
+    </p>
 
-      <p><b>Available functions in the method:</b></p>
-      <table>
+    <p><b>Available functions in the method:</b></p>
+    <table>
         <tr>
-          <th>Name</th>
-          <th>Params</th>
-          <th>Description</th>
+            <th>Name</th>
+            <th>Params</th>
+            <th>Description</th>
         </tr>
         <tr>
-          <td>setLeadId</td>
-          <td>$leadId - string</td>
-          <td>Specify unique Lead ID to convert.</td>
+            <td>setLeadId</td>
+            <td>$leadId - string</td>
+            <td>Specify unique Lead ID to convert.</td>
         </tr>
         <tr>
-          <td>setCreatePotential</td>
-          <td>$createPotential - bool</td>
-          <td>Set it true if Potential should be created.</td>
+            <td>setCreatePotential</td>
+            <td>$createPotential - bool</td>
+            <td>Set it true if Potential should be created.</td>
         </tr>
         <tr>
-          <td>setAssignTo</td>
-          <td>$assignTo - string</td>
-          <td>Specify a user the converted Lead should be assign to. It could be SMOWNERID value or user email.</td>
+            <td>setAssignTo</td>
+            <td>$assignTo - string</td>
+            <td>Specify a user the converted Lead should be assign to. It could be SMOWNERID value or user email.</td>
         </tr>
         <tr>
-          <td>setNotifyLeadOwner</td>
-          <td>$notifyLeadOwner - bool</td>
-          <td>Specify if a Lead owner should be notified.</td>
+            <td>setNotifyLeadOwner</td>
+            <td>$notifyLeadOwner - bool</td>
+            <td>Specify if a Lead owner should be notified.</td>
         </tr>
         <tr>
-          <td>setNotifyNewEntityOwner</td>
-          <td>$notifyNewEntityOwner - bool</td>
-          <td>Specify if a new entity owner should be notified.</td>
+            <td>setNotifyNewEntityOwner</td>
+            <td>$notifyNewEntityOwner - bool</td>
+            <td>Specify if a new entity owner should be notified.</td>
         </tr>
         <tr>
-          <td>addRecord</td>
-          <td>$record - array</td>
-          <td>Specify values for potential. It is mandatory ONLY if setCreatePotential(true) is set.</td>
+            <td>addRecord</td>
+            <td>$record - array</td>
+            <td>Specify values for potential. It is mandatory ONLY if setCreatePotential(true) is set.</td>
         </tr>
         <tr>
-          <td>setAccountId</td>
-          <td>$accountId - string</td>
-          <td>You can associate the existing account to the converting Lead.</td>
+            <td>setAccountId</td>
+            <td>$accountId - string</td>
+            <td>You can associate the existing account to the converting Lead.</td>
         </tr>
         <tr>
-          <td>setContactId</td>
-          <td>$contactId - string</td>
-          <td>You can associate the existing contact to the converting Lead.</td>
+            <td>setContactId</td>
+            <td>$contactId - string</td>
+            <td>You can associate the existing contact to the converting Lead.</td>
         </tr>
         <tr>
-          <td>setOverwriteAccountName</td>
-          <td>$overwrite - bool</td>
-          <td>If true, then the account name will be replaced by the company name from Lead while associating with the existing account.
-              If false, then association will only happen. However, if you set it true without giving account using setAccountId(), the working of this method remains unchanged.
-          </td>
+            <td>setOverwriteAccountName</td>
+            <td>$overwrite - bool</td>
+            <td>If true, then the account name will be replaced by the company name from Lead while associating with the
+                existing account.
+                If false, then association will only happen. However, if you set it true without giving account using
+                setAccountId(), the working of this method remains unchanged.
+            </td>
         </tr>
         <tr>
-          <td>withEmptyFields</td>
-          <td> - none -</td>
-          <td>Include the empty fields in the response.</td>
+            <td>withEmptyFields</td>
+            <td> - none -</td>
+            <td>Include the empty fields in the response.</td>
         </tr>
-      </table>
+    </table>
 
-      <br>
-      <pre><code class="language-php">
+    <br>
+    <pre><code class="language-php">
       use CristianPontes\ZohoCRMClient\ZohoCRMClient;
 
       $client = new ZohoCRMClient('Leads', 'YourAuthToken');
@@ -936,40 +1034,111 @@
           [Contact] => 161789000005836003
       )
       </code></pre>
-      <br><br>
+    <br><br>
 
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/cristianpontes/zoho-crm-client-php">Zoho CRM Client for PHP</a> is maintained by <a href="https://github.com/cristianpontes">cristianpontes</a>.</span>
+    <h3 id="updateRelatedRecords"><b>updateRelatedRecords</b></h3>
+    <p>UpdateRelatedRecords API Call</p>
+    <p>You can use the updateRelatedRecords method to update records related to another record.</p>
+    <p>Check: <a href="https://www.zoho.com/crm/help/api/updaterelatedrecords.html" target="_blank">https://www.zoho.com/crm/help/api/updaterelatedrecords.html</a>
+    </p>
 
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
+    <p><b>Available functions in the method:</b></p>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Params</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>relatedModule</td>
+            <td>$module - string</td>
+            <td>The module to which a record is related.
+                <br>For example: If a lead related to a campaign needs to be updated, the value for this parameter will be Leads.</td>
+        </tr>
+        <tr>
+            <td>id</td>
+            <td>$id - string</td>
+            <td>The ID of the record to be updated.</td>
+        </tr>
+        <tr>
+            <td>addRecord</td>
+            <td>$record - array</td>
+            <td>Add a record as a simple associative array, like Field -> Value.</td>
+        </tr>
+        <tr>
+            <td>setRecords</td>
+            <td>$records - array</td>
+            <td>Add multiple records as a simple associative array, like Field -> Value.</td>
+        </tr>
 
-    </section>
+    </table>
 
-    <script>
-      $( document ).ready(function() {
+    <br>
+    <pre><code class="language-php">
+        use CristianPontes\ZohoCRMClient\ZohoCRMClient;
+
+        $client = new ZohoCRMClient('Products', 'authtoken');
+
+        $response = $client->updateRelatedRecords()
+            ->id('productID123')
+            ->relatedModule('Leads')
+            ->addRecord([
+                'LEADID' => '999999999'
+                ... fields ...
+            ])
+            ->request();
+
+        // Sample response:
+
+        CristianPontes\ZohoCRMClient\Response\Record Object
+        (
+            [index] => 1
+            [data] => [
+                [added-ids] => []
+
+                [updated-ids] => [
+                    [0] => 999999999
+                ]
+            ]
+        )
+      </code></pre>
+    <br><br>
+
+    <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/cristianpontes/zoho-crm-client-php">Zoho CRM Client for PHP</a> is maintained by <a
+                href="https://github.com/cristianpontes">cristianpontes</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a
+                href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a
+                href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+    </footer>
+
+</section>
+
+<script>
+    $(document).ready(function () {
         if ($('#back-to-top').length) {
-          var scrollTrigger = 100, // px
-                  backToTop = function () {
+            var scrollTrigger = 100, // px
+                backToTop = function () {
                     var scrollTop = $(window).scrollTop();
                     if (scrollTop > scrollTrigger) {
-                      $('#back-to-top').addClass('show');
+                        $('#back-to-top').addClass('show');
                     } else {
-                      $('#back-to-top').removeClass('show');
+                        $('#back-to-top').removeClass('show');
                     }
-                  };
-          backToTop();
-          $(window).on('scroll', function () {
+                };
             backToTop();
-          });
-          $('#back-to-top').on('click', function (e) {
-            e.preventDefault();
-            $('html,body').animate({
-              scrollTop: 0
-            }, 700);
-          });
+            $(window).on('scroll', function () {
+                backToTop();
+            });
+            $('#back-to-top').on('click', function (e) {
+                e.preventDefault();
+                $('html,body').animate({
+                    scrollTop: 0
+                }, 700);
+            });
         }
-      });
-    </script>
-  </body>
+    });
+</script>
+</body>
 </html>
