@@ -65,9 +65,9 @@ echo "</pre>";
 + deleteFile
 + getFields
 + convertLead
++ updateRelatedRecords
 
 ## Documentation
-
 All the methods previously mentioned are well explained in the [library documentation page](https://cristianpontes.github.io/zoho-crm-client-php/).
 <br>
-Also, the code are well documented too, so you'll be able to look around the methods, functions and check how them work.
+Also, the code is well documented too, so you'll be able to look at the methods, functions and check how they work.

@@ -110,6 +110,15 @@ class ZohoCRMClient implements LoggerAwareInterface
         return new Request\UpdateRecords($this->request());
     }
 
+
+    /**
+     * @return Request\UpdateRelatedRecords
+     */
+    public function updateRelatedRecords()
+    {
+        return new Request\UpdateRelatedRecords($this->request());
+    }
+
     /**
      * @return Request\ConvertLead
      */

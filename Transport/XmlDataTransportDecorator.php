@@ -17,7 +17,7 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
     private $module;
     /** @var string */
     private $method;
-    /** @var string */
+    /** @var array */
     private $call_params;
 
 
@@ -62,6 +62,7 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
     private function encodeRequestConvertLead(array $paramList)
     {
         $root = new SimpleXMLElement('<Potentials></Potentials>');
+        $options = array();
 
         // row 1 (options)
         foreach (ConvertLead::getOptionFields() as $optionName) {
@@ -87,14 +88,15 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
 
     /**
      * @param array $records
-     * @param string $rootName
-     * @param array $options
      * @throws \CristianPontes\ZohoCRMClient\Exception\RuntimeException
      * @return string XML representation of the records
      */
     private function encodeRecords(array $records)
     {
-        $root = new SimpleXMLElement('<'.$this->module.'></'.$this->module.'>');
+        $module = $this->method == 'updateRelatedRecords' ?
+                $this->call_params['relatedModule'] : $this->module;
+
+        $root = new SimpleXMLElement('<'.$module.'></'.$module.'>');
 
         foreach ($records as $no => $record) {
             $row = $root->addChild('row');
@@ -111,7 +113,6 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
      * @param array $record
      * @param string $childName XML node name
      * @param SimpleXMLElement $xml
-     * @return string XML representation of the record
      */
     private function encodeRecord($record, $childName, &$xml)
     {
@@ -140,7 +141,7 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
 
     /**
      * @param $array
-     * @param $xml
+     * @param SimpleXMLElement $xml
      */
     private function parseNestedValues($array, &$xml)
     {
@@ -171,7 +172,7 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
      * @throws Exception\UnexpectedValueException When invalid XML is given to parse
      * @throws Exception\NoDataException when Zoho tells us there is no data
      * @throws Exception\ZohoErrorException when content is a Error response
-     * @return Response\Record[]|Response\Field[]|Response\MutationResult[]
+     * @return bool|Response\Record|Response\Record[]|Response\Field[]|Response\MutationResult
      */
     private function parse($content)
     {
@@ -222,6 +223,10 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
             return $this->parseResponseConvertLead($xml);
         }
 
+        if ($this->method == 'updateRelatedRecords') {
+            return $this->parseUpdateRelatedRecords($xml);
+        }
+
         if (isset($xml->result->{$this->module})) {
             return $this->parseResponseGetRecords($xml);
         }
@@ -251,7 +256,7 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
      * @param SimpleXMLElement $row
      * @return Response\Record
      */
-    private function rowToRecord(SimpleXMLElement $row)
+    private function rowToRecord($row)
     {
         $data = array();
         foreach($row as $field) {
@@ -271,7 +276,7 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
     }
 
     /**
-     * @param $xml
+     * @param SimpleXMLElement $xml
      * @return array
      */
     private function parseResponseGetFields($xml)
@@ -304,7 +309,7 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
     }
 
     /**
-     * @param $xml
+     * @param SimpleXMLElement $xml
      * @return Response\MutationResult
      */
     private function parseResponseDeleteRecords($xml)
@@ -313,7 +318,7 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
     }
 
     /**
-     * @param $xml
+     * @param SimpleXMLElement $xml
      * @return Response\MutationResult
      */
     private function parseResponseUploadFile($xml)
@@ -330,7 +335,7 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
     }
 
     /**
-     * @param $xml
+     * @param SimpleXMLElement $xml
      * @return Response\MutationResult
      */
     private function parseResponseDeleteFile($xml)
@@ -357,7 +362,7 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
     }
 
     /**
-     * @param $xml
+     * @param SimpleXMLElement $xml
      * @return Response\Record
      */
     private function parseResponseGetDeletedRecordIds($xml)
@@ -367,7 +372,7 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
     }
 
     /**
-     * @param $xml
+     * @param SimpleXMLElement $xml
      * @return array
      */
     private function parseResponseConvertLead($xml)
@@ -379,6 +384,23 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
 
         return $records;
     }
+
+    /**
+     * @param SimpleXMLElement $xml
+     * @return Response\Record
+     */
+    private function parseUpdateRelatedRecords($xml)
+    {
+        $result  = (array) $xml->result;
+        $added   = isset($result['added-ids'])   ? eval('return ' . $result['added-ids'] . ';')   : [];
+        $updated = isset($result['updated-ids']) ? eval('return ' . $result['updated-ids'] . ';') : [];
+        $data = array(
+            'added-ids'   => $added,
+            'updated-ids' => $updated
+        );
+        return new Response\Record($data, 1);
+    }
+
 
     /**
      * @param $xml

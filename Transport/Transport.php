@@ -10,7 +10,7 @@ interface Transport
      * @param string $module
      * @param string $method
      * @param array $paramList
-     * @return array
+     * @return string
      */
     public function call($module, $method, array $paramList);
 }

@@ -54,6 +54,34 @@ class ZohoCRMClientTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('CristianPontes\ZohoCRMClient\Request\UpdateRecords', $request);
     }
 
+    public function testUpdateRelatedRecords()
+    {
+        $request = $this->client->updateRelatedRecords();
+
+        $this->assertInstanceOf('CristianPontes\ZohoCRMClient\Request\UpdateRelatedRecords', $request);
+    }
+
+    public function testSearchRecords()
+    {
+        $request = $this->client->searchRecords();
+
+        $this->assertInstanceOf('CristianPontes\ZohoCRMClient\Request\SearchRecords', $request);
+    }
+
+    public function testGetSearchRecordsByPDC()
+    {
+        $request = $this->client->getSearchRecordsByPDC();
+
+        $this->assertInstanceOf('CristianPontes\ZohoCRMClient\Request\GetSearchRecordsByPDC', $request);
+    }
+
+    public function testConvertLead()
+    {
+        $request = $this->client->ConvertLead();
+
+        $this->assertInstanceOf('CristianPontes\ZohoCRMClient\Request\ConvertLead', $request);
+    }
+
     public function testGetFields()
     {
         $request = $this->client->getFields();
@@ -68,11 +96,32 @@ class ZohoCRMClientTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('CristianPontes\ZohoCRMClient\Request\DeleteRecords', $request);
     }
 
+    public function testGetDeletedRecordIds()
+    {
+        $request = $this->client->getDeletedRecordIds();
+
+        $this->assertInstanceOf('CristianPontes\ZohoCRMClient\Request\GetDeletedRecordIds', $request);
+    }
+
     public function testUploadFile()
     {
         $request = $this->client->uploadFile();
 
         $this->assertInstanceOf('CristianPontes\ZohoCRMClient\Request\UploadFile', $request);
+    }
+
+    public function testDownloadFile()
+    {
+        $request = $this->client->downloadFile();
+
+        $this->assertInstanceOf('CristianPontes\ZohoCRMClient\Request\DownloadFile', $request);
+    }
+
+    public function testDeleteFile()
+    {
+        $request = $this->client->deleteFile();
+
+        $this->assertInstanceOf('CristianPontes\ZohoCRMClient\Request\DeleteFile', $request);
     }
 
     public function testRequest()
