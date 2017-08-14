@@ -392,8 +392,8 @@ class XmlDataTransportDecorator extends AbstractTransportDecorator
     private function parseUpdateRelatedRecords($xml)
     {
         $result  = (array) $xml->result;
-        $added   = isset($result['added-ids'])   ? eval('return ' . $result['added-ids'] . ';')   : [];
-        $updated = isset($result['updated-ids']) ? eval('return ' . $result['updated-ids'] . ';') : [];
+        $added   = isset($result['added-ids'])   ? eval('return ' . $result['added-ids'] . ';')   : array();
+        $updated = isset($result['updated-ids']) ? eval('return ' . $result['updated-ids'] . ';') : array();
         $data = array(
             'added-ids'   => $added,
             'updated-ids' => $updated
