@@ -40,7 +40,7 @@ class UpdateRecordsTest extends \PHPUnit_Framework_TestCase
         $this->transport->response = true;
 
         $this->assertTrue($this->updateRecords->request());
-        $this->assertEquals(array('version' => 2, 'xmlData' =>  array(array('abc123'))), $this->transport->paramList);
+        $this->assertEquals(array('version' => 4, 'xmlData' =>  array(array('abc123'))), $this->transport->paramList);
     }
 
     public function testMultipleRecords()

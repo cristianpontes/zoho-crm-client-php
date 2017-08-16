@@ -29,7 +29,7 @@ class InsertRecordsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($this->insertRecords->request());
 
-        $this->assertEquals(array('version' => 2, 'xmlData' => array($record)), $this->transport->paramList);
+        $this->assertEquals(array('version' => 4, 'xmlData' => array($record)), $this->transport->paramList);
     }
 
     public function testMultipleRecords()
