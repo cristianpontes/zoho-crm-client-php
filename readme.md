@@ -12,7 +12,7 @@ This project was initially cloned from [this repository](https://github.com/chri
 
 
 ## Prerequisites
-   - PHP 5.3 or above
+   - PHP 5.4 or above
    - [CURL](http://php.net/manual/en/book.curl.php)
 
 ## Easy Installation
