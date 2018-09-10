@@ -28,8 +28,9 @@ class ZohoCRMClient implements LoggerAwareInterface
      * @param $authToken
      * @param string $domain
      * @param int $timeout
+     * @param bool $useSandbox
      */
-    public function __construct($module, $authToken, $domain = 'com', $timeout = 5)
+    public function __construct($module, $authToken, $domain = 'com', $timeout = 5, $useSandbox = false)
     {
         $this->module = $module;
 
@@ -38,12 +39,13 @@ class ZohoCRMClient implements LoggerAwareInterface
         } else {
             $curl_client = new Curl();
             $curl_client->setTimeout($timeout);
+            $baseUrl = 'https://crm' . ($useSandbox ? 'sandbox' : '') . '.zoho.' . $domain . '/crm/private/xml/';
             $this->transport = new Transport\XmlDataTransportDecorator(
                 new Transport\AuthenticationTokenTransportDecorator(
                     $authToken,
                     new Transport\BuzzTransport(
                         new Browser($curl_client),
-                        'https://crm.zoho.' . $domain . '/crm/private/xml/'
+                        $baseUrl
                     )
                 )
             );
