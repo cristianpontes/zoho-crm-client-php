@@ -29,7 +29,7 @@ class ZohoCRMClient implements LoggerAwareInterface
      * @param string $domain
      * @param int $timeout
      */
-    public function __construct($module, $authToken, $domain = 'com', $timeout = 5)
+    public function __construct($module, $authToken, $domain = 'com', $timeout = 30)
     {
         $this->module = $module;
 
