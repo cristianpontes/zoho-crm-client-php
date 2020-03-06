@@ -1,4 +1,10 @@
-# Zoho CRM Client for PHP
+# [Deprecated] Zoho CRM Client for PHP
+
+This project is no longer maintained and has been deprecated in favor of the official Zoho PHP SDK.
+<br> For more information, please visit [Zoho's official documentation](https://www.zoho.com/crm/developer/docs/server-side-sdks/php.html)
+<br> [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+---
+
 [![Build Status](https://travis-ci.org/cristianpontes/zoho-crm-client-php.svg?branch=master)](https://travis-ci.org/cristianpontes/zoho-crm-client-php)
 [![Latest Stable Version](https://poser.pugx.org/cristianpontes/zoho-crm-client-php/v/stable)](https://packagist.org/packages/cristianpontes/zoho-crm-client-php)
 [![License](https://poser.pugx.org/cristianpontes/zoho-crm-client-php/license)](https://packagist.org/packages/cristianpontes/zoho-crm-client-php)
